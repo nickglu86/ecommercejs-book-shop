@@ -1,11 +1,7 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import Commerce from '@chec/commerce.js';
 
-const COMMERCEJS_PUBLICKEY= process.env.REACT_APP_COMMERCEJS_PUBLICKEY;
-if (!COMMERCEJS_PUBLICKEY) {
-  throw new Error("REACT_APP_COMMERCEJS_PUBLICKEY environment variable is not set.");
-}
-const commerce = new Commerce(COMMERCEJS_PUBLICKEY);
+const commerce = new Commerce(process.env.REACT_APP_ECOMMERCEJS_PUBLIC_KEY as string);
 
 type Product = {
   // Define your product type here
