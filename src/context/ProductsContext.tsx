@@ -1,7 +1,8 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import Commerce from '@chec/commerce.js';
 
-const commerce = new Commerce(process.env.REACT_APP_ECOMMERCEJS_PUBLIC_KEY as string);
+const ecommerceJsPublicKey =  process.env.REACT_APP_COMMERCEJS_PUBLICKEY as string;
+ const commerce = new Commerce(ecommerceJsPublicKey);
 
 type Product = {
   // Define your product type here
