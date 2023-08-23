@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { useShopContext } from "../context/ShopContext";
-
+import { useNavigate } from "react-router-dom";
 
 type Product = {
     name: string;
@@ -16,10 +16,17 @@ const ProductsGallery: FC = () => {
 
     const { commerce,  products , cart , updateCart} = useShopContext();
 
+    let navigate = useNavigate(); 
+    const routeChange = () =>{ 
+        let path = `/cart`; 
+        navigate(path);
+    }
+
     const handleAddToCart = (productId: string, quantity: number):void => {
         commerce.cart.add(productId, quantity).then((item) => {
             updateCart();
-            console.log('updated')
+            
+            routeChange();
         }).catch((error) => {
           console.error('There was an error adding the item to the cart', error);
         });
