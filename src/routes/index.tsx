@@ -5,11 +5,11 @@ import About from "../pages/about";
 import Contact from "../pages/contact";
 import Shop from "../pages/shop";
 import Layout from "../layouts";
-import ProductsProvider from "../context/ProductsContext";
+import ShopProvider from "../context/ShopContext";
 
 const AppRoutes: FC = () => {
   return (
-    <ProductsProvider>
+    <ShopProvider>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -18,7 +18,7 @@ const AppRoutes: FC = () => {
           <Route path="/shop" element={<Shop />} />
         </Route>
       </Routes>
-    </ProductsProvider>
+    </ShopProvider>
   );
 };
 

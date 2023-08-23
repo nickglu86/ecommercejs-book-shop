@@ -1,5 +1,6 @@
 import React, { FC } from "react";
-import { useProductsContext } from "../context/ProductsContext";
+import { useShopContext } from "../context/ShopContext";
+
 
 type Product = {
     name: string;
@@ -8,21 +9,38 @@ type Product = {
  
 };
 
-const GetProduct: FC<{ product: Product}> = ({ product }) => (
-    <li key={product.id}>
-        <h4>{product.name}</h4>
-        <img src={product.image.url} width={250} alt={product.name} />
-    </li>
-);
+
+
 
 const ProductsGallery: FC = () => {
-    const { products } = useProductsContext();
 
+    const { commerce,  products , cart , updateCart} = useShopContext();
+
+    const handleAddToCart = (productId: string, quantity: number):void => {
+        commerce.cart.add(productId, quantity).then((item) => {
+            updateCart();
+            console.log('updated')
+        }).catch((error) => {
+          console.error('There was an error adding the item to the cart', error);
+        });
+      }
+
+    const GetProduct: FC<{ product: Product}> = ({ product }) => (
+        <li key={product.id}>
+            <h4>{product.name}</h4>
+            <img src={product.image.url} width={250} alt={product.name} />
+            <button onClick={ ()=> handleAddToCart(product.id, 1)}>Add to Cart</button>
+        </li>
+    );
+   
+
+    
+    
     return (
         <div className="gallery">
             <ul>
-                {products && products.map((product: any) => (
-                    <GetProduct product={product}  />
+                {products && products.map((product, index) => (
+                    <GetProduct product={product as Product} key={index}  />
                 ))}
             </ul>
         </div>
