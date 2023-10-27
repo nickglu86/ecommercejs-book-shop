@@ -1,12 +1,15 @@
 import React, { FC } from 'react';
 import ProductsGallery from '../components/ProductsGallery';
+import Cover from '../components/Cover';
+import BestSellers from '../components/BestSellers';
 
 const Home: FC = () => {
 
  return(
       <section>
-            <h2>Home Page</h2>
-            <ProductsGallery />
+            <Cover />
+            <BestSellers />
+          
       </section>
  )
 }

@@ -5,6 +5,7 @@ html {
   font-family: "Open Sans", sans-serif;
   margin: 0;
   padding: 0;
+  color: #090a1b;
 }
 #root {
   position: relative;
@@ -40,10 +41,10 @@ main {
   min-height: 1000px;
 }
 section {
-  margin: 20px auto 60px;
-  padding: 0 20px;
+  /* margin: 20px auto 60px; */
+  /* padding: 0 20px; */
   width: auto;
-  max-width: 1000px;
+  /* max-width: 1000px; */
 }
 section h2 {
   text-align: center;
@@ -60,7 +61,7 @@ section h2 {
 }
 footer {
   box-sizing: border-box;
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   width: 100%;
   margin: 10px auto 50px;
