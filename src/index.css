@@ -44,20 +44,24 @@ section {
   /* margin: 20px auto 60px; */
   /* padding: 0 20px; */
   width: auto;
-  /* max-width: 1000px; */
+  max-width: 1000px;
 }
 section h2 {
   text-align: center;
 }
 .gallery ul {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 .gallery ul li {
   overflow: hidden;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   align-items: center;
   padding: 20px 24px;
+  width: 300px;
+  height: 540px;
 }
 footer {
   box-sizing: border-box;
@@ -82,4 +86,17 @@ footer .adress ul, footer .social {
   /* align-items: center; */
   height: 100%;
   padding: 0 30px;
+}
+
+
+/* Generals */
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
 }

@@ -27,7 +27,7 @@ const CartSummary: FC = () => {
               <div>ID : {item.id}</div>
               <div>Name : {item.name}</div>
 
-              <div>Price :{item.price.raw} </div>
+              <div>Price :{item.price.formatted_with_symbol} </div>
             </div>
             <ItemsCounter itemId={item.id} itemQuantity={item.quantity}/>
             <div>

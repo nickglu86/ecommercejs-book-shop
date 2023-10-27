@@ -14,12 +14,22 @@ const ItemsCounter: FC<ItemsCounterProps> = (props) => {
   const [quantity, setQuantity] = useState(itemQuantity);
 
   const updateItemsAmount = (num:number) => {
-      const newQuantity = quantity + num;
-      commerce.cart
-      .update(itemId, { quantity: newQuantity })
-      .then((response) => console.log(response));
-      setQuantity(newQuantity);
-      updateCart();
+     
+      const newQuantity : number = quantity + num;
+       if( newQuantity > -1 && newQuantity < 6) {
+        commerce.cart
+        .update(itemId, { quantity: newQuantity })
+        .then((response) => console.log(response));
+        setQuantity(newQuantity);
+        updateCart();
+       }else  if(newQuantity > 5){
+        // setQuantity(5);
+          alert('You can\'t order more than 5 items of the same Book');
+       } else if(newQuantity < 0){
+         setQuantity(0);
+       }
+
+ 
 
   };
 
@@ -30,12 +40,14 @@ const ItemsCounter: FC<ItemsCounterProps> = (props) => {
       >
         +
       </button>
+     
       <input
         type="number"
         min={0}
         max={5}
         value={quantity}
-        style={{width: '60px'}}
+        onChange={()=>{}}
+        style={{width: '20px', textAlign: 'center'}}
       ></input>
       <button
         onClick={() => updateItemsAmount(-1)}
