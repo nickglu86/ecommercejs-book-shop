@@ -49,6 +49,33 @@ const BestSellers = () => {
       const GalleryItem = styled.li`
             text-align: center;
       `;
+      const PriceContainer = styled.div`
+            margin: 0 0 14px;
+            color: rgb(29, 103, 205);
+            font-family: system-ui;
+
+            .before-discount{
+                  text-decoration: line-through;
+                  margin-right: 5px;
+            }
+      `;
+
+      const BuyButton = styled.button`
+            background-color: #fff;
+            color: rgb(10, 46, 90);
+            border: 2px solid rgb(10, 46, 90);
+            border-radius: 18px;
+            font-size: 18px;
+            padding: 6px 16px;
+            font-weight: 600;
+            cursor: pointer;
+
+            &:hover{
+                  transition: 0.5s;
+                  background-color: rgb(10, 46, 90);
+                  color: #fff;  
+            }
+      `;
 
       const { products} = useShopContext();
 
@@ -56,8 +83,12 @@ const BestSellers = () => {
             <GalleryItem key={product.id}>
                 <img src={product.image.url} width={250} height={380} alt={product.name} />
                 <h4>{product.name}</h4>
-                <div>{product.price.formatted_with_symbol}</div>
-                <button >Add to Cart</button>
+                <PriceContainer>
+                  <span className="before-discount">${(parseInt(product.price.formatted) * 1.15).toFixed(2)} </span>
+                  <span>{product.price.formatted_with_symbol} </span>
+             
+                </PriceContainer>
+                <BuyButton >Buy</BuyButton>
             </GalleryItem>
         )
 
