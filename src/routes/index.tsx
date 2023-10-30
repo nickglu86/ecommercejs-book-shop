@@ -19,7 +19,7 @@ const AppRoutes: FC = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/books/:bookTitle" element={<Book />} />
+          <Route path="/book/:bookTitle" element={<Book />} />
         </Route>
       </Routes>
     </ShopProvider>
