@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 const About: FC = () => {
 
  return(
+     <main>
       <section>
             <h2>About Page</h2>
             <p>Welcome to Master Mind Books, your ultimate destination for inspiring literature. We are more than just an online bookstore – we are a community of thinkers, dreamers, and seekers of knowledge. Our carefully curated collection of books spans the realms of psychology, philosophy, personal growth, and more.</p>
@@ -11,6 +12,7 @@ const About: FC = () => {
         
         <p>Join us on a journey of exploration and self-discovery. Browse our catalog to find gems of wisdom that will inspire and enlighten you. We're not just a bookstore – we're your companions on the path to knowledge and enlightenment. Thank you for choosing Master Mind Books as your source for thought-provoking literature.</p>
       </section>
+     </main>
  )
 }
 

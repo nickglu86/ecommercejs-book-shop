@@ -1,14 +1,15 @@
-import React, { FC, useEffect, useState } from 'react';
-import ProductsGallery from '../components/ProductsGallery';
+import React, { FC, useEffect, useState } from "react";
+import ProductsGallery from "../components/ProductsGallery";
 
 const Shop: FC = () => {
-
- return(
+  return (
+    <main>
       <div>
-            <h2>Shop Page</h2>
-              <ProductsGallery />
+        <h2>Shop Page</h2>
+        <ProductsGallery />
       </div>
- )
-}
+    </main>
+  );
+};
 
 export default Shop;

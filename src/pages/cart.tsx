@@ -6,9 +6,12 @@ const Cart: FC = () => {
      
    
  return(
-      <section>
+    <main>
+     <section>
           <CartSummary />
      </section>
+    </main>
+
  )
 }
 

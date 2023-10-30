@@ -8,7 +8,7 @@ import BooksImg from '../assets/images/books.png'
 const Home: FC = () => {
 
  return(
-      <section>
+      <main>
             <Cover />
             <BestSellers />
             <Recommended />
@@ -24,7 +24,7 @@ const Home: FC = () => {
                   }}></div>
                   <img src={BooksImg} style={{width: '100%', height: '500px'}}/>
             </div>
-      </section>
+      </main>
  )
 }
 
