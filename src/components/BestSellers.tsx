@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import { useShopContext } from '../context/ShopContext';
 
@@ -86,7 +87,12 @@ const BestSellers = () => {
 
       const GetProduct: FC<{ product: Product}> = ({ product }) => (
             <GalleryItem key={product.id}>
-                <img src={product.image.url}  width={250} height={380} alt={product.name} />
+                        <Link
+ 
+        to={`/book/${product.name.replaceAll(" ", "-")}`}
+      >
+        <div>
+        <img src={product.image.url}  width={250} height={380} alt={product.name} />
                 <h4>{product.name}</h4>
                 <PriceContainer>
                   <span className="before-discount">${(parseInt(product.price.formatted) * 1.15).toFixed(2)} </span>
@@ -94,6 +100,8 @@ const BestSellers = () => {
              
                 </PriceContainer>
                 <BuyButton >Buy</BuyButton>
+            </div></Link>
+
             </GalleryItem>
         )
 
