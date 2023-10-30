@@ -72,11 +72,11 @@ const CartSummary: FC = () => {
     );
   };
   return (
-    <div>
+    <section>
       <h2>Cart Summary</h2>
       <CartItems />
       <Total />
-    </div>
+    </section>
   );
 };
 

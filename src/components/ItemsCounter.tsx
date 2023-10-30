@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import { useShopContext } from "../context/ShopContext";
 
 interface ItemsCounterProps {
-  itemId: string; // Update the type according to your use case
+  itemId: string; 
   itemQuantity: number;
 }
 
@@ -28,9 +28,6 @@ const ItemsCounter: FC<ItemsCounterProps> = (props) => {
        } else if(newQuantity < 0){
          setQuantity(0);
        }
-
- 
-
   };
 
   return (

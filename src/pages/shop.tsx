@@ -4,10 +4,10 @@ import ProductsGallery from "../components/ProductsGallery";
 const Shop: FC = () => {
   return (
     <main>
-      <div>
+      <section>
         <h2>Shop Page</h2>
         <ProductsGallery />
-      </div>
+      </section>
     </main>
   );
 };

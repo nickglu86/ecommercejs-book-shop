@@ -10,7 +10,7 @@ export interface ShopContextType  {
   
 export interface ShopContextProviderProps  {
     children: ReactNode;
-  };
+};
 
 
 export interface Cart {

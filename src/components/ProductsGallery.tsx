@@ -33,9 +33,6 @@ const ProductsGallery: FC = () => {
         </li>
     );
    
-
-    
-    
     return (
         <div className="gallery">
             <ul>

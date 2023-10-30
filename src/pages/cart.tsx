@@ -3,15 +3,10 @@ import CartSummary from '../components/CartSummary';
 
 const Cart: FC = () => {
    
-     
-   
  return(
     <main>
-     <section>
           <CartSummary />
-     </section>
     </main>
-
  )
 }
 

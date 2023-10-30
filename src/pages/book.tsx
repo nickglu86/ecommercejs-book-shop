@@ -1,20 +1,6 @@
 import React, { FC } from "react";
 import { useLocation } from 'react-router-dom';
- 
-
-type Product = {
-    name: string;
-    image: { url: string };
-    id: string;
-    price: {
-      raw: number;
-      formatted: string;
-      formatted_with_symbol: string;
-      formatted_with_code: string;
-    };
-    description: string
-  };
-
+import { Product } from "../interfaces";
 
 const Book: FC = () => {
  

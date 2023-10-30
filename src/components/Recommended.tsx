@@ -1,28 +1,14 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
 import '@splidejs/react-splide/css';
 import { useShopContext } from "../context/ShopContext";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { Product } from "../interfaces";
+import { RecommendedSection, SectionTitle } from '../styles/RecommendedStyles';
 
 const Recommended = () => {
 
-      const RecommendedSection = styled.section`
-            width: 100%;
-            height: 600px;
-            padding: 40px 0 100px 0;
-      `;
-      const SectionTitle = styled.h1`
-            font-size: 28px;
-            font-weight: 700px;
-            text-align: center;
-            margin-bottom: 40px;
-      `;
-
 const { commerce,  products , cart , updateCart} = useShopContext();
  
- 
-
     const GetProduct: FC<{ product: Product}> = ({ product }) => (
       <SplideSlide  key={product.id} >
             {/* <h4>{product.name}</h4> */}
@@ -39,9 +25,6 @@ const { commerce,  products , cart , updateCart} = useShopContext();
             </SplideSlide>
     );
    
-
-    
-    
     return (
         <RecommendedSection>
             <SectionTitle>The Masterpieces</SectionTitle>
