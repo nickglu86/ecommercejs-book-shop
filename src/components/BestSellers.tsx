@@ -49,6 +49,10 @@ const BestSellers = () => {
 
       const GalleryItem = styled.li`
             text-align: center;
+
+            img{
+                  border: 1px solid gray;
+            }
       `;
       const PriceContainer = styled.div`
             margin: 0 0 14px;

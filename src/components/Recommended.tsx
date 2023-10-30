@@ -50,8 +50,11 @@ const { commerce,  products , cart , updateCart} = useShopContext();
       <SplideSlide  key={product.id} >
             {/* <h4>{product.name}</h4> */}
             <img src={product.image.url} style={
-                  {     padding: '40px 0',
-                        transform: 'skewY(8deg)'
+                  {     padding: '0 0 0',
+                        margin: '4px 0 20px',
+                        transform: 'skewY(3deg)',
+                        borderRight: '10px solid gray',
+                        borderTop: '5px solid gray'
                   }
                 } width={250} height={340} alt={product.name} />
             {/* <div>{product.price.formatted_with_symbol}</div>

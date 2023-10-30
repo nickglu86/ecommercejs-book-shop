@@ -18,6 +18,7 @@ const AppRoutes: FC = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/cart" element={<Cart />} />
+       
         </Route>
       </Routes>
     </ShopProvider>
