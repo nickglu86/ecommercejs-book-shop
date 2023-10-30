@@ -1,16 +1,7 @@
 import React, { FC } from "react";
 import { useShopContext } from "../context/ShopContext";
 import { useNavigate } from "react-router-dom";
-
-type Product = {
-    name: string;
-    image: { url: string };
-    id: string
-    price: { formatted_with_symbol : string}
-     
-};
-
-
+import { Product } from "../interfaces";
 
 
 const ProductsGallery: FC = () => {

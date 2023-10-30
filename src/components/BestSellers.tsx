@@ -3,26 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useShopContext } from "../context/ShopContext";
 import { getURIBookTitle } from "../utils";
-type Category = {
-  id: string;
-  slug: string;
-  name: string;
-};
-
-type Categories = Array<Category>;
-
-type Product = {
-  name: string;
-  image: { url: string };
-  id: string;
-  categories: Categories;
-  price: {
-    raw: number;
-    formatted: string;
-    formatted_with_symbol: string;
-    formatted_with_code: string;
-  };
-};
+import { Product, Category } from "../interfaces";
 
 const BestSellers = () => {
   const BestSellersSection = styled.section`

@@ -3,31 +3,7 @@ import styled from 'styled-components';
 import '@splidejs/react-splide/css';
 import { useShopContext } from "../context/ShopContext";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-
-
-type Category = {
-      id: string;
-      slug: string;
-      name: string;
-    }
-
-type Categories = Array<Category>;
-
-
-type Product = {
-      name: string;
-      image: { url: string };
-      id: string
-      description: string;
-      categories: Categories;
-      price: {
-            raw: number;
-            formatted: string;
-            formatted_with_symbol: string;
-            formatted_with_code: string;
-          };
-   
-};
+import { Product, Category } from "../interfaces";
 
 const CardsSlider = () => {
 
