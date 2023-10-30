@@ -5,11 +5,11 @@ const ecommerceJsPublicKey = process.env.REACT_APP_COMMERCEJS_PUBLICKEY as strin
  
 const commerce = new Commerce(ecommerceJsPublicKey);
 
-type Product = {
+interface Product {
   // Define your product type here
 };
 
-type Cart = {
+interface Cart  {
   created: number;
   currency: { code: string; symbol: string };
   discount: any[]; // Adjust the type as needed
@@ -24,7 +24,7 @@ type Cart = {
   updated: number;
 };
 
-type LineItem = {
+interface LineItem  {
   id: string;
   product_id: string;
   name: string;
@@ -67,17 +67,17 @@ type LineItem = {
   tax: any; // Adjust the type as needed
 };
 
-type CartResponse = {
+interface CartResponse  {
 
 }
-type ShopContextType = {
+interface ShopContextType  {
   commerce: Commerce;
   products: Product[];
   cart: Cart | null;
   updateCart: () => void;
 };
 
-type ShopContextProviderProps = {
+interface ShopContextProviderProps {
   children: ReactNode;
 };
 

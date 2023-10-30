@@ -1,7 +1,7 @@
-import React, { FC, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useShopContext } from "../context/ShopContext";
-import { getRawBookTitle } from "../utils";
+import React, { FC } from "react";
+import { useLocation } from 'react-router-dom';
+ 
+
 type Product = {
     name: string;
     image: { url: string };
@@ -14,24 +14,18 @@ type Product = {
     };
     description: string
   };
+
+
 const Book: FC = () => {
-  const { products } = useShopContext();
-  const params = useParams();
-  const bookTitle = getRawBookTitle(params.bookTitle);
-  const [product, setProduct] = useState<Product | null>(null);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    products.forEach((bookItem: any ) => bookItem?.name === bookTitle ?  setProduct(bookItem) : null);
-
-  }, []);
-
+ 
+  const location = useLocation();
+  const product: Product = location.state.product;
 
  
   return (
     <main>
       <section style={{width: '1000px', margin: '0 auto', textAlign: 'center'}}>
-        <h2>{bookTitle}</h2>
+        <h2>{product.name}</h2>
         <img
             src={product?.image.url}
             width={250}

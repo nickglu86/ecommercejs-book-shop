@@ -35,7 +35,7 @@ const BestSellers = () => {
     font-size: 28px;
     font-weight: 700px;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
   `;
 
   const BestSellersGallery = styled.ul`
@@ -83,7 +83,9 @@ const BestSellers = () => {
 
   const GetProduct: FC<{ product: Product }> = ({ product }) => (
     <GalleryItem key={product.id}>
-      <Link to={`/book/${getURIBookTitle(product.name)}`}>
+      <Link to={`/book/${getURIBookTitle(product.name)}`}
+      state={{ product }}
+      >
         <div>
           <img
             src={product.image.url}
