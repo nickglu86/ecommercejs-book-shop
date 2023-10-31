@@ -7,11 +7,12 @@ const Navbar: FC = () => {
     <nav>
       <ul>
         <li>
-          <Link to="/shop">Shop</Link>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/shop">Shop</Link>
         </li>
+
 
         <li>
           <Link to="/">
@@ -21,11 +22,14 @@ const Navbar: FC = () => {
           </Link>
         </li>
         <li>
-          <Link to="/contact">Contact</Link>
+          <Link to="/about">About</Link>
         </li>
         <li>
-          <Link to="/nothing-here">Book Reviews</Link>
+          <Link to="/contact">Contact</Link>
         </li>
+        {/* <li>
+          <Link to="/nothing-here">Book Reviews</Link>
+        </li> */}
       </ul>
     </nav>
   );

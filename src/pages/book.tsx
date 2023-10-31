@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import { useLocation } from 'react-router-dom';
-import { Product } from "../interfaces";
+import { IProduct } from "../interfaces";
 
 const Book: FC = () => {
  
   const location = useLocation();
-  const product: Product = location.state.product;
+  const product: IProduct = location.state.product;
 
  
   return (

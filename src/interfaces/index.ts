@@ -1,26 +1,26 @@
 import { ReactNode } from "react";
 import Commerce from '@chec/commerce.js';
 
-export interface ShopContextType  {
+export interface IShopContextType  {
     commerce: Commerce;
-    products: Product[];
-    cart: Cart | null;
+    products: IProduct[];
+    cart: ICart | null;
     updateCart: () => void;
   };
   
-export interface ShopContextProviderProps  {
+export interface IShopContextProviderProps  {
     children: ReactNode;
 };
 
 
-export interface Cart {
+export interface ICart {
   created: number;
   currency: { code: string; symbol: string };
   discount: any[]; // Adjust the type as needed
   expires: number;
   hosted_checkout_url: string;
   id: string;
-  line_items: LineItem[]; // Use a new type for line items
+  line_items: ILineItem[]; // Use a new type for line items
   meta: null;
   subtotal: {
     raw: number;
@@ -33,11 +33,11 @@ export interface Cart {
   updated: number;
 }
 
-export interface CartResponse  {
+export interface ICartResponse  {
 
 }
 
-export interface LineItem {
+export interface ILineItem {
   id: string;
   product_id: string;
   name: string;
@@ -80,21 +80,21 @@ export interface LineItem {
   tax: any; // Adjust the type as needed
 }
 
-export interface Category {
+export interface ICategory {
     id: string;
     slug: string;
     name: string;
   }
 
-export interface Categories extends Array<Category> {}
+export interface ICategories extends Array<ICategory> {}
 
 
-export interface Product {
+export interface IProduct {
     name: string;
     image: { url: string };
     id: string
     description: string;
-    categories: Categories;
+    categories: ICategories;
     price: {
           raw: number;
           formatted: string;
@@ -104,4 +104,4 @@ export interface Product {
  
 };
 
-export interface Products extends Array<Product> {}
+export interface IProducts extends Array<IProduct> {}

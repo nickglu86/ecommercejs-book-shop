@@ -44,8 +44,7 @@ nav ul li a {
   font-weight: 500;
 }
 main {
-  height: calc(100vh-115px);
-  min-height: 1000px;
+  padding-bottom: 30px;
 }
 section {
   /* margin: 20px auto 60px; */

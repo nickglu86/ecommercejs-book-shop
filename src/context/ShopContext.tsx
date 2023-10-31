@@ -1,10 +1,10 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import Commerce from '@chec/commerce.js';
-import { ShopContextType, ShopContextProviderProps, Products, Cart, CartResponse } from "../interfaces";
+import { IShopContextType, IShopContextProviderProps, IProducts, ICart, ICartResponse } from "../interfaces";
 
 const ecommerceJsPublicKey = process.env.REACT_APP_COMMERCEJS_PUBLICKEY as string;
 const commerce = new Commerce(ecommerceJsPublicKey);
-const ShopContext = createContext<ShopContextType | null>(null);
+const ShopContext = createContext<IShopContextType | null>(null);
 
 export const useShopContext = () => {
   const context = React.useContext(ShopContext);
@@ -14,14 +14,14 @@ export const useShopContext = () => {
   return context;
 };
 
-export default function ShopProvider({ children }: ShopContextProviderProps) {
-  const [products, setProducts] = useState<Products>([]);
-  const [cart, setCart] = useState<Cart | null>(null);
+export default function ShopProvider({ children }: IShopContextProviderProps) {
+  const [products, setProducts] = useState<IProducts>([]);
+  const [cart, setCart] = useState<ICart | null>(null);
 
   const fetchProducts = async () => {
     try {
       const productResponse = await commerce.products.list();
-      setProducts(productResponse.data as Products);
+      setProducts(productResponse.data as IProducts);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -29,9 +29,9 @@ export default function ShopProvider({ children }: ShopContextProviderProps) {
 
   const fetchCart = async () => {
     try {
-      const cartResponse : CartResponse = await commerce.cart.retrieve();
+      const cartResponse : ICartResponse = await commerce.cart.retrieve();
       console.log( cartResponse)
-      setCart(cartResponse as Cart);
+      setCart(cartResponse as ICart);
     } catch (error) {
       console.error("Error fetching cart:", error);
     }
@@ -42,7 +42,7 @@ export default function ShopProvider({ children }: ShopContextProviderProps) {
     fetchCart();
   }, []);
 
-  const contextValue: ShopContextType = {
+  const contextValue: IShopContextType = {
     commerce: commerce,
     products: products,
     cart: cart,

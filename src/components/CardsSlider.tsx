@@ -2,13 +2,13 @@ import React, { FC } from "react";
 import "@splidejs/react-splide/css";
 import { useShopContext } from "../context/ShopContext";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import { Product, Category } from "../interfaces";
+import { IProduct, ICategory } from "../interfaces";
 import { CardSliderSection, SectionTitle } from "../styles/CardsSliderStyles";
 
 const CardsSlider = () => {
   const { commerce, products, cart, updateCart } = useShopContext();
 
-  const GetProduct: FC<{ product: Product }> = ({ product }) => (
+  const GetProduct: FC<{ product: IProduct }> = ({ product }) => (
     <SplideSlide
       key={product.id}
       style={{ textAlign: "center", display: "flex", justifyContent: "center" }}
@@ -41,7 +41,7 @@ const CardsSlider = () => {
       >
         {products &&
           products.map((product, index) => (
-            <GetProduct product={product as Product} key={index} />
+            <GetProduct product={product as IProduct} key={index} />
           ))}
       </Splide>
     </CardSliderSection>
