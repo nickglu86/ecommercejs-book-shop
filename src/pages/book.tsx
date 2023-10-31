@@ -1,12 +1,14 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { IProduct } from "../interfaces";
 import { PriceContainer, BuyButton } from "../styles/BestSellersStyles";
+import { useShopContext } from "../context/ShopContext";
+
 
 const Book: FC = () => {
   const BookSection = styled.section`
-    width: 800px;
+    width: 1000px;
     margin: 60px auto 0;
     textalign: center;
     display: grid;
@@ -14,15 +16,22 @@ const Book: FC = () => {
   `;
 
   const BookInfo = styled.section`
-    width: 500px;
+    width: 640px;
     text-align: left;
     h2 {
       text-align: left;
     }
   `;
+
+  const BookImage = styled.div`
+  margin: 0 auto 0;
+  `;
+  const { commerce, cart, updateCart } = useShopContext();
   const location = useLocation();
   const product: IProduct = location.state.product;
-
+  const theObj = {__html:product?.description};
+  
+ 
   return (
     <main>
       <BookSection>
@@ -56,7 +65,7 @@ const Book: FC = () => {
 
 
         </BookInfo>
-
+        <BookImage>
         <img
           src={product?.image.url}
           width={190}
@@ -64,9 +73,13 @@ const Book: FC = () => {
           alt={product?.name}
          style={{ padding: "30px 0 35px"}}
         />
-        <div>
-          <p>{product?.description}</p>
-        </div>
+        </BookImage>
+
+    
+
+      <div dangerouslySetInnerHTML={theObj} />
+         
+       
       </BookSection>
     </main>
   );

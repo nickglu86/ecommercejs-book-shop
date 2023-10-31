@@ -6,6 +6,7 @@ const ecommerceJsPublicKey = process.env.REACT_APP_COMMERCEJS_PUBLICKEY as strin
 const commerce = new Commerce(ecommerceJsPublicKey);
 const ShopContext = createContext<IShopContextType | null>(null);
 
+console.log(commerce);
 export const useShopContext = () => {
   const context = React.useContext(ShopContext);
   if (context === null) {
@@ -21,6 +22,7 @@ export default function ShopProvider({ children }: IShopContextProviderProps) {
   const fetchProducts = async () => {
     try {
       const productResponse = await commerce.products.list();
+
       setProducts(productResponse.data as IProducts);
     } catch (error) {
       console.error("Error fetching products:", error);
