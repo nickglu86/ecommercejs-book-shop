@@ -95,6 +95,7 @@ export interface IProduct {
     id: string
     description: string;
     categories: ICategories;
+    permalink: string;
     price: {
           raw: number;
           formatted: string;
@@ -105,3 +106,15 @@ export interface IProduct {
 };
 
 export interface IProducts extends Array<IProduct> {}
+
+export interface IAtrribute {
+
+    id: string;
+    name: string;
+    value: string;
+    meta: null
+ 
+}
+
+
+export interface IAtrributes extends Array<IAtrribute> {}

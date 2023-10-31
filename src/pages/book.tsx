@@ -1,7 +1,7 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useState, useEffect } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import { IProduct } from "../interfaces";
+import { IProduct} from "../interfaces";
 import { PriceContainer, BuyButton } from "../styles/BestSellersStyles";
 import { useShopContext } from "../context/ShopContext";
 
@@ -26,17 +26,24 @@ const Book: FC = () => {
   const BookImage = styled.div`
   margin: 0 auto 0;
   `;
+
   const { commerce, cart, updateCart } = useShopContext();
   const location = useLocation();
   const product: IProduct = location.state.product;
   const theObj = {__html:product?.description};
-  
  
+  const [productAuthor, setProductAuthor] = useState<string>('');
+
+    useEffect(() => {
+      commerce.products.retrieve( product.permalink, { type: 'permalink' }).then((product) => setProductAuthor(product.attributes[0].value as string));
+ 
+    }, []);
   return (
     <main>
       <BookSection>
         <BookInfo>
           <h2>{product.name}</h2>
+          <p>{productAuthor}</p>
           <PriceContainer>
           <span className="before-discount">
               ${(parseInt(product.price.formatted) * 1.15).toFixed(2)}{" "}
