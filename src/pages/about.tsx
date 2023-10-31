@@ -1,34 +1,8 @@
 import React, { FC } from "react";
-import styled from "styled-components";
+import { AboutSection, AboutBox, AboutPharagraph} from "../styles/AboutStyles";
 import MindImg from "../assets/images/mind.png";
 
 const About: FC = () => {
-  const AboutSection = styled.section`
-    // background-color: rgb(10, 46, 90);
-    height: 100%;
-    overflow: hidden;
-  `;
-
-  const AboutBox = styled.div`
-    width: 1000px;
-    margin: 0 auto;
-    padding: 40px 0;
-    font-size: 21px;
-  `;
-
-  const AboutPharagraph = styled.div`
-    display: flex;
-    div {
-      width: 60%;
-    }
-    img {
-      margin: 50px auto;
-      display: block;
-      width: 14%;
-      height: auto;
-      oveflow: hidden;
-    }
-  `;
 
   return (
     <main>
