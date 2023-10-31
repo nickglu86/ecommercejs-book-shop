@@ -2,10 +2,23 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import instagram from "../assets/logos/instagram.png";
 import facebook from "../assets/logos/facebook.png";
-
+import BooksImg from '../assets/images/books.png'
 const Footer: FC = () => {
   return (
     <footer>
+
+        <div style={{
+                         
+                         position: 'absolute',
+                         width: '100vw',
+                         height: '400px',
+                         background: 'linear-gradient(to bottom, #fff 0%,rgba(0,0,0,0) 100%)',
+                         zIndex: '-1'
+                      
+             }}>
+ 
+                  <img src={BooksImg} style={{width: '100%', height: '500px', opacity: '0.3'}}/>
+       </div>
       <div className="social">
         <div>
           <h5>Follow Us:</h5>

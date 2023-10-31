@@ -40,11 +40,11 @@ export const PriceContainer = styled.div`
 export const BuyButton = styled.button`
   background-color: #fff;
   color: rgb(10, 46, 90);
-  border: 2px solid rgb(10, 46, 90);
+  border: 1px solid rgb(10, 46, 90);
   border-radius: 18px;
-  font-size: 18px;
+  font-size: 16px;
   padding: 6px 16px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
 
   &:hover {

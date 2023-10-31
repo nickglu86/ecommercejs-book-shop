@@ -1,78 +1,79 @@
 import React, { FC, useState, useEffect } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import { IProduct} from "../interfaces";
+import { IProduct } from "../interfaces";
 import { PriceContainer, BuyButton } from "../styles/BestSellersStyles";
 import { useShopContext } from "../context/ShopContext";
 
-
 const Book: FC = () => {
   const BookSection = styled.section`
-    width: 1000px;
+    width:800px;
     margin: 60px auto 0;
     textalign: center;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+
   `;
 
   const BookInfo = styled.section`
-    width: 640px;
     text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     h2 {
       text-align: left;
     }
   `;
 
   const BookImage = styled.div`
-  margin: 0 auto 0;
+    margin: 0 auto 0;
   `;
 
   const { commerce, cart, updateCart } = useShopContext();
   const location = useLocation();
   const product: IProduct = location.state.product;
-  const theObj = {__html:product?.description};
- 
-  const [productAuthor, setProductAuthor] = useState<string>('');
+  const theObj = { __html: product?.description };
 
-    useEffect(() => {
-      commerce.products.retrieve( product.permalink, { type: 'permalink' }).then((product) => setProductAuthor(product.attributes[0].value as string));
- 
-    }, []);
+  const [productAuthor, setProductAuthor] = useState<string>("");
+
+  useEffect(() => {
+    commerce.products
+      .retrieve(product.permalink, { type: "permalink" })
+      .then((product) =>
+        setProductAuthor(product.attributes[0].value as string)
+      );
+  }, []);
   return (
     <main>
       <BookSection>
         <BookInfo>
-          <h2>{product.name}</h2>
-          <p>{productAuthor}</p>
-          <PriceContainer>
-          <span className="before-discount">
-              ${(parseInt(product.price.formatted) * 1.15).toFixed(2)}{" "}
-            </span>
-            <span>{product.price.formatted_with_symbol} </span>
-          </PriceContainer>
           <div>
-            <button>+</button>
+            <h2>{product.name}</h2>
+            <p>{productAuthor}</p>
+            <PriceContainer>
+              <span className="before-discount">
+                ${(parseInt(product.price.formatted) * 1.15).toFixed(2)}{" "}
+              </span>
+              <span>{product.price.formatted_with_symbol} </span>
+            </PriceContainer>
+            <div>
+              <button>+</button>
 
-            <input
-              type="number"
-              min={0}
-              max={5}
-              value={1}
-              onChange={() => {}}
-              style={{ width: "20px", textAlign: "center" }}
-            ></input>
-            <button>-</button>
-          </div>
-          <div   style={{ padding: "30px 0 15px"}}>
-          <BuyButton>Buy Now</BuyButton>
-          </div>
-          <div>
-          <BuyButton>Add to Cart</BuyButton>
+              <input
+                type="number"
+                min={0}
+                max={5}
+                value={1}
+                onChange={() => {}}
+                style={{ width: "20px", textAlign: "center" }}
+              ></input>
+              <button>-</button>
             </div>
-
-
-        </BookInfo>
-        <BookImage>
+            <div style={{ padding: "30px 0 15px" }}>
+              <BuyButton>Buy Now</BuyButton>
+            </div>
+            <div>
+              <BuyButton>Add to Cart</BuyButton>
+            </div>
+          </div>
+          <BookImage>
         <img
           src={product?.image.url}
           width={190}
@@ -81,12 +82,9 @@ const Book: FC = () => {
          style={{ padding: "30px 0 35px"}}
         />
         </BookImage>
+        </BookInfo>
 
-    
-
-      <div dangerouslySetInnerHTML={theObj} />
-         
-       
+        <div style={{paddingRight: '150px'}} dangerouslySetInnerHTML={theObj} />
       </BookSection>
     </main>
   );

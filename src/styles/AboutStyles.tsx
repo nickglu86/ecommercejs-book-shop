@@ -20,7 +20,7 @@ export const AboutPharagraph = styled.div`
   img {
     margin: 50px auto;
     display: block;
-    width: 14%;
+    width: 200px;
     height: auto;
     oveflow: hidden;
   }
