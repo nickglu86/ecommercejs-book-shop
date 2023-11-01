@@ -37,6 +37,7 @@ nav ul li {
   align-items: center;
   justify-content: center;
   font-size: 22px;
+
 }
 nav ul li a {
   text-decoration: none;
@@ -55,9 +56,13 @@ section {
 section h2 {
   text-align: center;
 }
+.gallery{
+  margin: 30px  auto 0;
+  width: 90%;
+}
 .gallery ul {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
 }
 .gallery ul li {
   overflow: hidden;
@@ -66,34 +71,48 @@ section h2 {
   flex-direction: column;
   align-items: center;
   padding: 20px 24px;
-  width: 300px;
+  width: 200px;
   height: 540px;
+  margin-bottom: 60px;
+  text-align: center;
 }
 footer {
   box-sizing: border-box;
   /* position: absolute; */
   bottom: 0;
   width: 100%;
-  margin: 10px auto 50px;
-  /* padding: 0 40px; */
+  margin: 0px auto 50px;
+
   display: flex;
   justify-content: space-between;
   border-top: 1px solid #000;
 }
-
+footer .footer-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1000px;
+  margin: 0 auto;
+  padding: 40px 0 0 0 ; 
+}
 footer ul {
   flex-direction: column;
   list-style-type: none;
   padding: 0;
+
 }
 footer .adress ul, footer .social {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   /* align-items: center; */
   height: 100%;
   padding: 0 30px;
 }
 
+footer nav ul li{
+  text-align: left;
+  display: block;
+}
 
 /* Generals */
 

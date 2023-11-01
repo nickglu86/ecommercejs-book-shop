@@ -11,7 +11,7 @@ const Recommended = () => {
   const { commerce, products, cart, updateCart } = useShopContext();
 
   const GetProduct: FC<{ product: IProduct }> = ({ product }) => (
-    <SplideSlide key={product.id} style={{ width: "400px" }}>
+    <SplideSlide key={product.id} style={{ width: "600px!important" }}>
       <Link to={`/book/${getURIBookTitle(product.name)}`}   state={{ product }}>
         <img
           src={product.image.url}

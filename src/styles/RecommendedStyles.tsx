@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const RecommendedSection = styled.section`
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
     height: 600px;
     padding: 40px 0 100px 0;
 `;

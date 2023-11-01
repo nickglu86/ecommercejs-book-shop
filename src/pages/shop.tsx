@@ -5,7 +5,7 @@ const Shop: FC = () => {
   return (
     <main>
       <section>
-        <h2>Shop Page</h2>
+        <h2>Shop</h2>
         <ProductsGallery />
       </section>
     </main>
