@@ -22,7 +22,7 @@ const Recommended = () => {
             border: "1px solid black",
             borderRight: "10px solid gray",
             borderTop: "5px solid gray",
-            width: "80%",
+            width: "90%",
           }}
           width={250}
           height={340}

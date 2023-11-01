@@ -20,8 +20,12 @@ const Footer: FC = () => {
           style={{ width: "100%", height: "500px", opacity: "0.3" }}
         />
       </div>
+
       <div className="footer-content">
         <div className="sitemap">
+        <div>
+      Read 500 pages like this every day. <br/>That's how knowledge works. It builds up, like compound interest.  <br/>All of you can do it, but I guarantee not many of you will do it.
+      </div>
           <nav>
             <ul>
               <li>

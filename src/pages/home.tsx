@@ -3,7 +3,7 @@ import ProductsGallery from '../components/ProductsGallery';
 import Cover from '../components/Cover';
 import BestSellers from '../components/BestSellers';
 import Recommended from '../components/Recommended';
-import CardsSlider from '../components/CardsSlider';
+import Slider from '../components/Slider';
 
 const Home: FC = () => {
 
@@ -12,7 +12,7 @@ const Home: FC = () => {
             <Cover />
             <BestSellers />
             <Recommended />
-            <CardsSlider />
+            <Slider />
       </main>
  )
 }
