@@ -1,9 +1,10 @@
 import React, { FC, useState, useEffect } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import { IProduct } from "../interfaces";
+import { IProduct, IAtrributes} from "../interfaces";
 import { PriceContainer, BuyButton } from "../styles/BestSellersStyles";
 import { useShopContext } from "../context/ShopContext";
+import { findProductAttribute } from "../utils";
 
 const Book: FC = () => {
   const BookSection = styled.section`
@@ -36,8 +37,10 @@ const Book: FC = () => {
   useEffect(() => {
     commerce.products
       .retrieve(product.permalink, { type: "permalink" })
-      .then((product) =>
-        setProductAuthor(product.attributes[0].value as string)
+      .then((product) =>{
+        findProductAttribute(product.attributes as IAtrributes, "Author", setProductAuthor);
+      }
+      
       );
   }, []);
   return (
