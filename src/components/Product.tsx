@@ -5,28 +5,13 @@ import { getURIBookTitle } from "../utils";
 import { IProduct, ICategory } from "../interfaces";
 import { BestSellersSection, BestSellersGallery, SectionTitle, GalleryItem, PriceContainer, BuyButton } from "../styles/BestSellersStyles";
 import { useNavigate } from "react-router-dom";
+import { handleAddToCart } from "../utils";
 
   const Product: FC<{ product: IProduct, discount: Boolean }> = ({ product, discount}) => { 
 
-    const { commerce,  products , cart , updateCart} = useShopContext();
+    const { commerce,  products , cart , updateCart, cartModal} = useShopContext();
 
     let navigate = useNavigate(); 
-
-
-    const routeChange = () =>{ 
-        let path = `/cart`; 
-        navigate(path);
-    }
-
-    const handleAddToCart = (productId: string, quantity: number):void => {
-        commerce.cart.add(productId, quantity).then((item) => {
-            updateCart();
-
-            routeChange();
-        }).catch((error) => {
-          console.error('There was an error adding the item to the cart', error);
-        });
-      }
 
     return(
         <GalleryItem key={product.id}>
@@ -52,8 +37,8 @@ import { useNavigate } from "react-router-dom";
   
               <span>{product.price.formatted_with_symbol} </span>
             </PriceContainer>
-            
-        <BuyButton onClick={ ()=> handleAddToCart(product.id, 1)}>Buy</BuyButton>
+
+        <BuyButton onClick={ ()=> handleAddToCart(product.id, 1, commerce, cartModal, updateCart )}>Buy</BuyButton>
       </GalleryItem>
     )
    

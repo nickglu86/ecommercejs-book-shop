@@ -5,6 +5,7 @@ import { IProduct, IAtrributes} from "../interfaces";
 import { PriceContainer, BuyButton } from "../styles/BestSellersStyles";
 import { useShopContext } from "../context/ShopContext";
 import { findProductAttribute } from "../utils";
+import { handleAddToCart } from "../utils";
 
 const Book: FC = () => {
   const BookSection = styled.section`
@@ -27,7 +28,25 @@ const Book: FC = () => {
     margin: 0 auto 0;
   `;
 
-  const { commerce, cart, updateCart } = useShopContext();
+
+  const ItemsCounterContainer = styled.div`
+    border: 1px solid #05185E;
+    width: min-content;
+    display: flex;
+    button {
+          all: unset;
+          width: 20px;
+          text-align: center;
+    }
+  `;
+
+  const ItemsCounterInput = styled.input`
+    width: 20px;
+    text-align: center;
+    border: none;
+  `;
+
+const { commerce, cart, updateCart, cartModal } = useShopContext();
   const location = useLocation();
   const product: IProduct = location.state.product;
   const theObj = { __html: product?.description };
@@ -56,24 +75,20 @@ const Book: FC = () => {
               </span>
               <span>{product.price.formatted_with_symbol} </span>
             </PriceContainer>
-            <div>
+            <ItemsCounterContainer>
               <button>+</button>
-
-              <input
+              <ItemsCounterInput
                 type="number"
                 min={0}
                 max={5}
                 value={1}
                 onChange={() => {}}
-                style={{ width: "20px", textAlign: "center" }}
-              ></input>
+              ></ItemsCounterInput>
               <button>-</button>
-            </div>
+            </ItemsCounterContainer>
+            
             <div style={{ padding: "30px 0 15px" }}>
-              <BuyButton>Buy Now</BuyButton>
-            </div>
-            <div>
-              <BuyButton>Add to Cart</BuyButton>
+            <BuyButton onClick={ ()=> handleAddToCart(product.id, 1, commerce, cartModal, updateCart )}>Buy</BuyButton>
             </div>
           </div>
           <BookImage>

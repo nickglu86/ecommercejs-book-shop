@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { useShopContext } from "../context/ShopContext";
 import {
   CartModalOverlay,
@@ -30,6 +30,7 @@ interface ModalType {
 export default function CartModal({ children, isOpen, toggle }: ModalType) {
   const { commerce, cart, updateCart } = useShopContext();
 
+  
   const CartProductsList = () => {
     return (
       <CartProductsListContainer>
