@@ -5,6 +5,8 @@ import BestSellers from '../components/BestSellers';
 import Recommended from '../components/Recommended';
 import Slider from '../components/Slider';
 
+
+
 const Home: FC = () => {
 
  return(

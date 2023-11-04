@@ -18,6 +18,7 @@ a,a:link,a:visited {
 }
 header {
   width: 100%;
+  position: relative;
 }
 header nav {
   width: 100%;
@@ -76,6 +77,9 @@ section h2 {
   margin-bottom: 60px;
   text-align: center;
 }
+
+
+
 footer {
   box-sizing: border-box;
   /* position: absolute; */
@@ -125,3 +129,4 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none;
 }
+ 

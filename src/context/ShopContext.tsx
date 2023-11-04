@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import Commerce from '@chec/commerce.js';
 import { IShopContextType, IShopContextProviderProps, IProducts, ICart, ICartResponse } from "../interfaces";
+import useCartModal from "../hooks/useCartModal";
 
 const ecommerceJsPublicKey = process.env.REACT_APP_COMMERCEJS_PUBLICKEY as string;
 const commerce = new Commerce(ecommerceJsPublicKey);
@@ -48,6 +49,7 @@ export default function ShopProvider({ children }: IShopContextProviderProps) {
     products: products,
     cart: cart,
     updateCart: fetchCart,
+    cartModal:  useCartModal()
   };
 
   return (

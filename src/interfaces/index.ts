@@ -6,8 +6,14 @@ export interface IShopContextType  {
     products: IProduct[];
     cart: ICart | null;
     updateCart: () => void;
-  };
+    cartModal: ICartModal
+};
   
+export  interface ICartModal {
+  isOpen: boolean;
+  toggle: () => void;
+}
+
 export interface IShopContextProviderProps  {
     children: ReactNode;
 };
