@@ -1,5 +1,7 @@
 import React, { FC, useState } from "react";
 import { useShopContext } from "../context/ShopContext";
+import { ItemsCounterContainer, ItemsCounterInput } from "./ItemsCounterStyles";
+
 
 interface ItemsCounterProps {
   itemId: string; 
@@ -31,27 +33,26 @@ const ItemsCounter: FC<ItemsCounterProps> = (props) => {
   };
 
   return (
-    <div>
+    <ItemsCounterContainer>
       <button
         onClick={() => updateItemsAmount(+1)}
       >
         +
       </button>
      
-      <input
+      <ItemsCounterInput
         type="number"
         min={0}
         max={5}
         value={quantity}
         onChange={()=>{}}
-        style={{width: '20px', textAlign: 'center'}}
-      ></input>
+      ></ItemsCounterInput>
       <button
         onClick={() => updateItemsAmount(-1)}
       >
         -
       </button>
-    </div>
+    </ItemsCounterContainer>
   );
 };
 

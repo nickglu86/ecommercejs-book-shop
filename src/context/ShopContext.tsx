@@ -42,7 +42,7 @@ export default function ShopProvider({ children }: IShopContextProviderProps) {
   useEffect(() => {
     fetchProducts();
     fetchCart();
-  }, []);
+  }, [commerce]);
 
   const contextValue: IShopContextType = {
     commerce: commerce,

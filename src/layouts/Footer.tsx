@@ -9,7 +9,7 @@ const Footer: FC = () => {
       <div
         style={{
           position: "absolute",
-          width: "100vw",
+          width: "100%",
           height: "400px",
           background: "linear-gradient(to bottom, #fff 0%,rgba(0,0,0,0) 100%)",
           zIndex: "-1",
