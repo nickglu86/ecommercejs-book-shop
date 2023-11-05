@@ -4,6 +4,7 @@ export const ItemsCounterContainer = styled.div`
       border: 1px solid #05185E;
       width: min-content;
       display: flex;
+      height: 23px;
       button {
             all: unset;
             width: 20px;

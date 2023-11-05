@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
-import CartSummary from '../components/CartSummary';
+import CartCheckout from '../components/CartCheckout';
 
 const Cart: FC = () => {
    
  return(
     <main>
-          <CartSummary />
+          <CartCheckout />
     </main>
  )
 }
