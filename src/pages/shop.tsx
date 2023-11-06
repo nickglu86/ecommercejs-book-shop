@@ -1,7 +1,7 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductsGallery from "../components/ProductsGallery";
 
-const Shop: FC = () => {
+const Shop = () => {
   return (
     <main>
       <section>

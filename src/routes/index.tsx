@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/home";
 import About from "../pages/about";
@@ -10,7 +10,7 @@ import Cart from "../pages/cart";
 import Book from "../pages/book";
 import Checkout from "../pages/checkout";
 
-const AppRoutes: FC = () => {
+const AppRoutes = () => {
   return (
     <ShopProvider>
       <Routes>

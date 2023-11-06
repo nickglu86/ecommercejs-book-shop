@@ -1,9 +1,9 @@
-import { FC } from "react";
 import { Link } from "react-router-dom";
 import instagram from "../assets/logos/instagram.png";
 import facebook from "../assets/logos/facebook.png";
 import BooksImg from "../assets/images/books.png";
-const Footer: FC = () => {
+
+const Footer = () => {
   return (
     <footer>
       <div
@@ -23,9 +23,12 @@ const Footer: FC = () => {
 
       <div className="footer-content">
         <div className="sitemap">
-        <div>
-      Read 500 pages like this every day. <br/>That's how knowledge works. It builds up, like compound interest.  <br/>All of you can do it, but I guarantee not many of you will do it.
-      </div>
+          <div>
+            Read 500 pages like this every day. <br />
+            That's how knowledge works. It builds up, like compound interest.{" "}
+            <br />
+            All of you can do it, but I guarantee not many of you will do it.
+          </div>
           <nav>
             <ul>
               <li>
@@ -40,7 +43,6 @@ const Footer: FC = () => {
               <li>
                 <Link to="/contact">Contact</Link>
               </li>
-
               <li>
                 <Link to="/nothing-here">Book Reviews</Link>
               </li>

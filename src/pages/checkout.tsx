@@ -10,35 +10,35 @@ const Checkout = () => {
     return {
       line_items: line_items,
       customer: {
-            firstname: 'John',
-            lastname: 'Doe',
-            email: 'john.doe@example.com',
-          },
-          shipping: {
-            name: 'John Doe',
-            street: '123 Fake St',
-            town_city: 'San Francisco',
-            county_state: 'CA',
-            postal_zip_code: '94103',
-            country: 'US',
-          },
-          fulfillment: {
-            // The shipping method ID for "USPS Ground" (for example)
-            // You can use commerce.checkout.getShippingOptions() to get a list
-            shipping_method: 'ship_1ypbroE658n4ea',
-          },
-          payment: {
-            // Test Gateway is enabled by default, and is used when you submit orders with
-            // your sandbox API key
-            gateway: 'test_gateway',
-            card: {
-              number: '4242 4242 4242 4242',
-              expiry_month: '01',
-              expiry_year: '2023',
-              cvc: '123',
-              postal_zip_code: '94103',
-            },
-          },
+        firstname: "John",
+        lastname: "Doe",
+        email: "john.doe@example.com",
+      },
+      shipping: {
+        name: "John Doe",
+        street: "123 Fake St",
+        town_city: "San Francisco",
+        county_state: "CA",
+        postal_zip_code: "94103",
+        country: "US",
+      },
+      fulfillment: {
+        // The shipping method ID for "USPS Ground" (for example)
+        // You can use commerce.checkout.getShippingOptions() to get a list
+        shipping_method: "ship_1ypbroE658n4ea",
+      },
+      payment: {
+        // Test Gateway is enabled by default, and is used when you submit orders with
+        // your sandbox API key
+        gateway: "test_gateway",
+        card: {
+          number: "4242 4242 4242 4242",
+          expiry_month: "01",
+          expiry_year: "2023",
+          cvc: "123",
+          postal_zip_code: "94103",
+        },
+      },
     };
   };
   useEffect(() => {
@@ -51,7 +51,7 @@ const Checkout = () => {
         );
         const token: string = checkoutObj.id;
         console.log(token);
-        console.log(checkoutObj.line_items)
+        console.log(checkoutObj.line_items);
         // setCheckoutToken(token);
         commerce.checkout
           .capture(token, getNewOrder(checkoutObj.line_items))

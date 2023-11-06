@@ -1,8 +1,8 @@
-import React, { FC } from "react";
+import React from "react";
 import { AboutSection, AboutBox, AboutPharagraph} from "../styles/AboutStyles";
 import MindImg from "../assets/images/mind.png";
 
-const About: FC = () => {
+const About = () => {
 
   return (
     <main>

@@ -1,7 +1,7 @@
-import { FC } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logos/logo.png";
-const Navbar: FC = () => {
+
+const Navbar = () => {
   return (
     <nav>
       <ul>
@@ -11,8 +11,6 @@ const Navbar: FC = () => {
         <li>
           <Link to="/shop">Shop</Link>
         </li>
-
-
         <li>
           <Link to="/">
             <div>

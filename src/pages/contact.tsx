@@ -1,5 +1,6 @@
-import React, { FC, useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { StyledForm, StyledLabel, StyledInput, StyledButton, StyledTextArea } from "../styles/ContactStyles";
+
 interface ContactFormData {
   name: string;
   phone: string;
@@ -8,7 +9,7 @@ interface ContactFormData {
   details: string;
 }
 
-const Contact: FC = () => {
+const Contact = () => {
 
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",

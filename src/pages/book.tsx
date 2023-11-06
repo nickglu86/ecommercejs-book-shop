@@ -1,50 +1,13 @@
-import React, { FC, useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { IProduct, IAtrributes} from "../interfaces";
 import { PriceContainer, BuyButton } from "../styles/BestSellersStyles";
 import { useShopContext } from "../context/ShopContext";
 import { findProductAttribute } from "../utils";
 import { handleAddToCart } from "../utils";
+import { BookSection, BookInfo, BookImage, ItemsCounterContainer, ItemsCounterInput } from "../styles/BookStyles";
 
-const Book: FC = () => {
-  const BookSection = styled.section`
-    width:800px;
-    margin: 60px auto 0;
-    textalign: center;
-
-  `;
-
-  const BookInfo = styled.section`
-    text-align: left;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    h2 {
-      text-align: left;
-    }
-  `;
-
-  const BookImage = styled.div`
-    margin: 0 auto 0;
-  `;
-
-
-  const ItemsCounterContainer = styled.div`
-    border: 1px solid #05185E;
-    width: min-content;
-    display: flex;
-    button {
-          all: unset;
-          width: 20px;
-          text-align: center;
-    }
-  `;
-
-  const ItemsCounterInput = styled.input`
-    width: 20px;
-    text-align: center;
-    border: none;
-  `;
+const Book = () => {
 
 const { commerce, cart, updateCart, cartModal } = useShopContext();
   const location = useLocation();

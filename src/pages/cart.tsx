@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import CartCheckout from '../components/CartCheckout';
 
-const Cart: FC = () => {
+const Cart = () => {
    
  return(
     <main>

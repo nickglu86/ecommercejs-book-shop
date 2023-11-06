@@ -32,7 +32,6 @@ export default function ShopProvider({ children }: IShopContextProviderProps) {
   const fetchCart = async () => {
     try {
       const cartResponse : ICartResponse = await commerce.cart.retrieve();
-      console.log( cartResponse)
       setCart(cartResponse as ICart);
     } catch (error) {
       console.error("Error fetching cart:", error);
