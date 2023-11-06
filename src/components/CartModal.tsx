@@ -15,7 +15,7 @@ import {
   CartProductsInfo,
   CartProductPrice,
   CartProductRemoveItem,
-  CheckOutButton
+  CheckOutButton,
 } from "../styles/CartModalStyles";
 import ItemsCounter from "./ItemsCounter";
 import ArrowSVG from "../assets/images/arrow.svg";
@@ -31,7 +31,7 @@ export default function CartModal({ children, isOpen, toggle }: ModalType) {
   const { commerce, cart, updateCart } = useShopContext();
 
   useEffect(() => {}, [cart]);
-  
+
   const CartProductsList = () => {
     return (
       <CartProductsListContainer>
@@ -69,7 +69,7 @@ export default function CartModal({ children, isOpen, toggle }: ModalType) {
       <CartTotalContainer>
         <div>Total Items: {cart?.total_items}</div>
         <div>
-          Total Amount:  
+          Total Amount:
           <CartProductPrice>
             {cart?.subtotal.formatted_with_symbol}
           </CartProductPrice>
