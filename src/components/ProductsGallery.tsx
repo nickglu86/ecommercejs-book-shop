@@ -5,18 +5,22 @@ import { IProduct } from "../interfaces";
 import Product from "./Product";
 
 const ProductsGallery: FC = () => {
+  const { products } = useShopContext();
 
-    const { products } = useShopContext();
-   
-    return (
-        <div className="gallery">
-            <ul>
-                {products && products.map((product, index) => (
-                    <Product key={index} product={product as IProduct} discount={false} />
-                ))}
-            </ul>
-        </div>
-    );
-}
+  return (
+    <div className="gallery">
+      <ul>
+        {products &&
+          products.map((product, index) => (
+            <Product
+              key={index}
+              product={product as IProduct}
+              discount={false}
+            />
+          ))}
+      </ul>
+    </div>
+  );
+};
 
 export default ProductsGallery;

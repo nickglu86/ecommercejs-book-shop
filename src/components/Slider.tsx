@@ -26,7 +26,7 @@ const Slider = () => {
         {products &&
           products.map((product, index) => (
             // <GetProduct product={product as IProduct} key={index} />
-            <SliderCard  product={product as IProduct} key={index} />
+            <SliderCard product={product as IProduct} key={index} />
           ))}
       </Splide>
     </CardSliderSection>
