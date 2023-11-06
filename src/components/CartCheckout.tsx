@@ -15,9 +15,12 @@ import {
   CartProductRemoveItem,
   CheckOutButton
 } from "../styles/CartCheckoutStyles";
+import { Link } from "react-router-dom";
 
 const CartCheckout = () => {
   const { commerce, cart, updateCart } = useShopContext();
+
+  // console.log( commerce.cart.cartId)
 
   const updateItemsAmount = ( itemId: string , quantity: number) => {
       commerce.cart.update(itemId, { quantity: quantity }).then(response => console.log(response));
@@ -67,11 +70,23 @@ const CartCheckout = () => {
           <div>Total Items: {cart?.total_items}</div>
           <div>Total Price: {cart?.subtotal.formatted_with_symbol}</div>
         </div>
+        <div>
         <CheckOutButton
           onClick={() => commerce.cart.empty().then((response) => updateCart())}
         >
           Clean Cart
         </CheckOutButton>
+        <Link to="/checkout">
+        <CheckOutButton
+           
+           >
+            CheckOut
+           </CheckOutButton>
+        </Link>
+
+
+        </div>
+
       </div>
     );
   };

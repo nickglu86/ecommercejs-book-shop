@@ -17,9 +17,10 @@
   export const handleAddToCart = (productId: string, quantity: number, commerce: Commerce, cartModal: ICartModal, updateCart: () => void):void => {
     commerce.cart.add(productId, quantity).then((item) => {
         updateCart();
-        setTimeout(() => {
-          cartModal.toggle();
-        }, 700);
+        cartModal.toggle();
+        // setTimeout(() => {
+        //   cartModal.toggle();
+        // }, 700);
         // routeChange();
     }).catch((error) => {
       console.error('There was an error adding the item to the cart', error);

@@ -20,6 +20,7 @@ export interface IShopContextProviderProps  {
 
 
 export interface ICart {
+  cartId: string;
   created: number;
   currency: { code: string; symbol: string };
   discount: any[]; // Adjust the type as needed

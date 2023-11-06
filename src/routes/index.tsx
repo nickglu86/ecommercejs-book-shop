@@ -8,6 +8,7 @@ import Layout from "../layouts";
 import ShopProvider from "../context/ShopContext";
 import Cart from "../pages/cart";
 import Book from "../pages/book";
+import Checkout from "../pages/checkout";
 
 const AppRoutes: FC = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes: FC = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/book/:bookTitle" element={<Book />} />
         </Route>
       </Routes>

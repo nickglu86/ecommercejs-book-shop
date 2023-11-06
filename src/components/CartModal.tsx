@@ -30,6 +30,7 @@ interface ModalType {
 export default function CartModal({ children, isOpen, toggle }: ModalType) {
   const { commerce, cart, updateCart } = useShopContext();
 
+  useEffect(() => {}, [cart]);
   
   const CartProductsList = () => {
     return (
