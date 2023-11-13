@@ -1,10 +1,44 @@
 import React, { useEffect, useState } from "react";
 import { useShopContext } from "../context/ShopContext";
+import AddressForm from "../components/AddressForm";
 
 const Checkout = () => {
   const { commerce, cart } = useShopContext();
 
   const [checkoutToken, setCheckoutToken] = useState<String | null>(null);
+  const [activeStep, setActiveStep] = useState(0);
+  const [shippingData, setShippingData] = useState({});
+
+  const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
+ 
+  useEffect(() => {
+    const generateToken = async () => {
+      console.log(cart);
+      try {
+        const checkoutObj = await commerce.checkout.generateToken(
+          cart?.id as string,
+          { type: "cart" }
+        );
+        const token: string = checkoutObj.id;
+        console.log(token);
+        setCheckoutToken(token);
+         commerce.services.localeListShippingCountries(token).then((response: any) => console.log(response));
+ 
+        // commerce.checkout
+        //   .capture(token, getNewOrder(checkoutObj.line_items))
+        //   .then((response) => console.log(response));
+      } catch (error) {}
+    };
+    generateToken();
+     
+    // fetchShippingCountries(checkoutToken)
+  }, []);
+
+  const fetchShippingCountries = async (checkoutTokenId : any) => {
+    const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId);
+    console.log({countries})
+  };
 
   const getNewOrder = (line_items: Object) => {
     return {
@@ -41,30 +75,13 @@ const Checkout = () => {
       },
     };
   };
-  useEffect(() => {
-    const generateToken = async () => {
-      console.log(cart);
-      try {
-        const checkoutObj = await commerce.checkout.generateToken(
-          cart?.id as string,
-          { type: "cart" }
-        );
-        const token: string = checkoutObj.id;
-        console.log(token);
-        console.log(checkoutObj.line_items);
-        // setCheckoutToken(token);
-        commerce.checkout
-          .capture(token, getNewOrder(checkoutObj.line_items))
-          .then((response) => console.log(response));
-      } catch (error) {}
-    };
-    generateToken();
-  }, []);
+
 
   return (
     <main>
       <section>
         <h2>CheckOut</h2>
+        {/* <AddressForm token={checkoutToken as string}/> */}
       </section>
     </main>
   );
