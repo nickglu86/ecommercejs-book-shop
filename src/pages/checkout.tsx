@@ -5,7 +5,7 @@ import AddressForm from "../components/AddressForm";
 const Checkout = () => {
   const { commerce, cart } = useShopContext();
 
-  const [checkoutToken, setCheckoutToken] = useState<String | null>(null);
+  const [checkoutToken, setCheckoutToken] = useState<string | null>(null);
   const [activeStep, setActiveStep] = useState(0);
   const [shippingData, setShippingData] = useState({});
 
@@ -28,14 +28,16 @@ const Checkout = () => {
         const token: string = checkoutObj.id;
         console.log(token);
         setCheckoutToken(token);
-         commerce.services.localeListShippingCountries(token).then((response: any) => console.log(response));
+        //  commerce.services.localeListShippingCountries(token).then((response: any) => console.log(response));
  
         commerce.checkout
           .capture(token, getNewOrder(checkoutObj.line_items) as any)
           .then((response) => console.log(response));
-      } catch (error) {}
+      } catch (error) {
+        console.error(error)
+      }
     };
-    generateToken();
+    // generateToken();
      
     // fetchShippingCountries(checkoutToken)
   }, [shippingData]);
@@ -45,7 +47,7 @@ const Checkout = () => {
     console.log({countries})
   };
 
-  const getNewOrder = (line_items: Object) => {
+  const getNewOrder = (line_items: object) => {
     return {
       line_items: line_items,
       customer: {

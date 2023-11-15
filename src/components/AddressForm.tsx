@@ -9,7 +9,7 @@ import {
 
 interface IAdressFormProps {
   token: string;
-  setShippingData: Function
+  setShippingData: (obj: object) => void 
 }
 const AddressForm = (props: IAdressFormProps) => {
   const { commerce, cart } = useShopContext();
@@ -24,8 +24,8 @@ const AddressForm = (props: IAdressFormProps) => {
 
   const formSubmit = (event : FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    var data = new FormData(event.currentTarget);
-    let formObject = Object.fromEntries(data.entries());
+    const data = new FormData(event.currentTarget);
+    const formObject = Object.fromEntries(data.entries());
     setShippingData({
       customer: {
         firstname: formObject.firstname,
