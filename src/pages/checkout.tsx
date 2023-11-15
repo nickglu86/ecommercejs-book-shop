@@ -13,6 +13,11 @@ const Checkout = () => {
   const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
  
   useEffect(() => {
+
+    if(Object.keys(shippingData).length > 0) {
+      setActiveStep(1);
+    }
+
     const generateToken = async () => {
       console.log(cart);
       try {
@@ -25,15 +30,15 @@ const Checkout = () => {
         setCheckoutToken(token);
          commerce.services.localeListShippingCountries(token).then((response: any) => console.log(response));
  
-        // commerce.checkout
-        //   .capture(token, getNewOrder(checkoutObj.line_items))
-        //   .then((response) => console.log(response));
+        commerce.checkout
+          .capture(token, getNewOrder(checkoutObj.line_items) as any)
+          .then((response) => console.log(response));
       } catch (error) {}
     };
     generateToken();
      
     // fetchShippingCountries(checkoutToken)
-  }, []);
+  }, [shippingData]);
 
   const fetchShippingCountries = async (checkoutTokenId : any) => {
     const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId);
@@ -62,17 +67,23 @@ const Checkout = () => {
         shipping_method: "ship_1ypbroE658n4ea",
       },
       payment: {
-        // Test Gateway is enabled by default, and is used when you submit orders with
-        // your sandbox API key
-        gateway: "test_gateway",
-        card: {
-          number: "4242 4242 4242 4242",
-          expiry_month: "01",
-          expiry_year: "2023",
-          cvc: "123",
-          postal_zip_code: "94103",
+        gateway: 'paypal',
+        paypal: {
+          action: 'authorize',
         },
       },
+      // payment: {
+      //   // Test Gateway is enabled by default, and is used when you submit orders with
+      //   // your sandbox API key
+      //   gateway: "test_gateway",
+      //   card: {
+      //     number: "4242 4242 4242 4242",
+      //     expiry_month: "01",
+      //     expiry_year: "2023",
+      //     cvc: "123",
+      //     postal_zip_code: "94103",
+      //   },
+      // },
     };
   };
 
@@ -81,7 +92,14 @@ const Checkout = () => {
     <main>
       <section>
         <h2>CheckOut</h2>
-        {/* <AddressForm token={checkoutToken as string}/> */}
+      {
+        activeStep === 0 ? (
+          <AddressForm token={'token'} setShippingData={setShippingData} />
+        ) : (
+          <h3>Payment</h3>
+        )
+      }
+     
       </section>
     </main>
   );

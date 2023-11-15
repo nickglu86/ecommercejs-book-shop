@@ -30,3 +30,20 @@ export const StyledInput = styled.input`
   border: 1px solid #ccc;
   border-radius: 5px;
 `;
+
+export const StyledButton = styled.button`
+  background-color: #fff;
+  color: rgb(10, 46, 90);
+  border: 2px solid rgb(10, 46, 90);
+  border-radius: 18px;
+  font-size: 18px;
+  padding: 6px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 20px auto 0;
+
+  &:hover {
+    transition: 0.5s;
+    background-color: rgb(10, 46, 90);
+    color: #fff;
+  }`;
