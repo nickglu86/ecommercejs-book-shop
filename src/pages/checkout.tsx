@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useShopContext } from "../context/ShopContext";
 import AddressForm from "../components/AddressForm";
+import PaymentGetaway from "../components/PaymentGetaway";
 
 const Checkout = () => {
   const { commerce, cart } = useShopContext();
@@ -95,10 +96,10 @@ const Checkout = () => {
       <section>
         <h2>CheckOut</h2>
       {
-        activeStep === 0 ? (
+        activeStep === 1 ? (
           <AddressForm token={'token'} setShippingData={setShippingData} />
         ) : (
-          <h3>Payment</h3>
+          <PaymentGetaway />
         )
       }
      
