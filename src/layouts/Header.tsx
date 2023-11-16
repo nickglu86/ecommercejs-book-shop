@@ -1,3 +1,4 @@
+import React from "react";
 import Navbar from "./Navbar";
 import CartImage from "../assets/images/cart.png";
 import { useShopContext } from "../context/ShopContext";

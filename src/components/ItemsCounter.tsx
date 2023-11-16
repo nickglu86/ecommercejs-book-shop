@@ -38,7 +38,7 @@ const ItemsCounter: FC<ItemsCounterProps> = (props) => {
         min={0}
         max={5}
         value={quantity}
-        onChange={() => {}}
+     
       ></ItemsCounterInput>
       <button onClick={() => updateItemsAmount(-1)}>-</button>
     </ItemsCounterContainer>

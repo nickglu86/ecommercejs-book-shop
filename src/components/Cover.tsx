@@ -6,7 +6,7 @@ const Cover = () => {
     <CoverSection>
       <CoverImage />
       <Quote>
-        "Today a reader, <br /> &nbsp;&nbsp;Tomorrow a leader."
+      &quot;Today a reader, <br /> &nbsp;&nbsp;Tomorrow a leader.&quot;
       </Quote>
       <Author>Margaret Fuller</Author>
       {/* <CTAButton>

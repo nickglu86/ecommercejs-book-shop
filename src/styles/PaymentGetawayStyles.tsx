@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const PaymentContainer = styled.div`
-  background-color: #f4f4f4;
-  padding: 20px 80px;
-  border-radius: 25px;
-  width: 600px;
-  margin: 40px auto 0;
-  text-align: center;
+  // background-color: #f4f4f4;
+  // padding: 20px 80px;
+  // border-radius: 25px;
+  // width: 600px;
+  // margin: 40px auto 0;
+  // text-align: center;
  
 `;
 

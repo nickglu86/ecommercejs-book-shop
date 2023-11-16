@@ -10,6 +10,10 @@ import {
   formatExpirationDate,
 } from '../utils/payment';
 
+interface IPaymentGateawayProps {
+  setPayment: (obj: object) => void 
+}
+
 interface ReactCreditCards {
   number: string | number;
   name: string;
@@ -20,8 +24,19 @@ interface ReactCreditCards {
   locale?: { valid: string } | undefined;
   formData?: null | object;
 }
-
-const PaymentGetaway = () => {
+      // payment: {
+      //   // Test Gateway is enabled by default, and is used when you submit orders with
+      //   // your sandbox API key
+      //   gateway: "test_gateway",
+      //   card: {
+      //     number: "4242 4242 4242 4242",
+      //     expiry_month: "01",
+      //     expiry_year: "2023",
+      //     cvc: "123",
+      //     postal_zip_code: "94103",
+      //   },
+      // },
+const PaymentGetaway = ( props: IPaymentGateawayProps) => {
   const [creditCardInfo, setCreditCardInfo] = useState<ReactCreditCards>({
     number: '',
     name: '',

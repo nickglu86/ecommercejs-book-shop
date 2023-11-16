@@ -45,7 +45,7 @@ const { commerce, cart, updateCart, cartModal } = useShopContext();
                 min={0}
                 max={5}
                 value={1}
-                onChange={() => {}}
+    
               ></ItemsCounterInput>
               <button>-</button>
             </ItemsCounterContainer>

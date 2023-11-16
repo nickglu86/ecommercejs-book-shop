@@ -24,7 +24,7 @@ const About = () => {
               diverse selection of titles that not only expand your mind but
               also nourish your soul.
             </p>
-            Whether you're delving into the depths of
+            Whether you&sbquo;re delving into the depths of
               human psychology or exploring the mysteries of philosophy, our
               collection is designed to stimulate your intellect and foster
               personal development.
@@ -35,7 +35,7 @@ const About = () => {
           <p>
             Join us on a journey of exploration and self-discovery. Browse our
             catalog to find gems of wisdom that will inspire and enlighten you.
-            We're not just a bookstore – we're your companions on the path to
+            We&sbquo;re not just a bookstore – we&sbquo;re your companions on the path to
             knowledge and enlightenment. Thank you for choosing Master Mind
             Books as your source for thought-provoking literature.
           </p>

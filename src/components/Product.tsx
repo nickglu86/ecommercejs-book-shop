@@ -7,11 +7,11 @@ import { BestSellersSection, BestSellersGallery, SectionTitle, GalleryItem, Pric
 import { useNavigate } from "react-router-dom";
 import { handleAddToCart } from "../utils";
 
-  const Product: FC<{ product: IProduct, discount: Boolean }> = ({ product, discount}) => { 
+  const Product: FC<{ product: IProduct, discount: boolean }> = ({ product, discount}) => { 
 
     const { commerce,  products , cart , updateCart, cartModal} = useShopContext();
 
-    let navigate = useNavigate(); 
+    // let navigate = useNavigate(); 
 
     return(
         <GalleryItem key={product.id}>

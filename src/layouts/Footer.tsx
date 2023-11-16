@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import instagram from "../assets/logos/instagram.png";
 import facebook from "../assets/logos/facebook.png";
@@ -24,8 +25,8 @@ const Footer = () => {
       <div className="footer-content">
         <div className="sitemap">
           <div>
-            Read 500 pages like this every day. <br />
-            That's how knowledge works. It builds up, like compound interest.{" "}
+          &apos;Read 500 pages like this every day. <br />
+            That&sbquo;s how knowledge works. It builds up, like compound interest.&apos;{" "}
             <br />
             All of you can do it, but I guarantee not many of you will do it.
           </div>

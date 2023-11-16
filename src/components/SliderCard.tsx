@@ -42,7 +42,7 @@ const SliderCard: FC<{ product: IProduct }> = ({ product }) => {
 
 
   return (
-    <SplideSlide key={product.id} style={SplideSlideStyles as Object}>
+    <SplideSlide key={product.id} style={SplideSlideStyles as object}>
       <SlideCardStyles>
         <SlideInfo>
           <h2>{product.name}</h2>

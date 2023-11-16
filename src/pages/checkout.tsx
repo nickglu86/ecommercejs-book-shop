@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useShopContext } from "../context/ShopContext";
 import AddressForm from "../components/AddressForm";
 import PaymentGetaway from "../components/PaymentGetaway";
+import { CheckoutContainer, StepsList } from "../styles/CheckoutStyles";
 
 const Checkout = () => {
   const { commerce, cart } = useShopContext();
@@ -9,13 +10,15 @@ const Checkout = () => {
   const [checkoutToken, setCheckoutToken] = useState<string | null>(null);
   const [activeStep, setActiveStep] = useState(0);
   const [shippingData, setShippingData] = useState({});
+  const [payment, setPayment] = useState({});
+
+  const stepsLabels = ['Shipping address', 'Payment details', 'Completed']
 
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
   const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
- 
-  useEffect(() => {
 
-    if(Object.keys(shippingData).length > 0) {
+  useEffect(() => {
+    if (Object.keys(shippingData).length > 0) {
       setActiveStep(1);
     }
 
@@ -30,22 +33,24 @@ const Checkout = () => {
         console.log(token);
         setCheckoutToken(token);
         //  commerce.services.localeListShippingCountries(token).then((response: any) => console.log(response));
- 
+
         commerce.checkout
           .capture(token, getNewOrder(checkoutObj.line_items) as any)
           .then((response) => console.log(response));
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     };
     // generateToken();
-     
+
     // fetchShippingCountries(checkoutToken)
   }, [shippingData]);
 
-  const fetchShippingCountries = async (checkoutTokenId : any) => {
-    const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId);
-    console.log({countries})
+  const fetchShippingCountries = async (checkoutTokenId: any) => {
+    const { countries } = await commerce.services.localeListShippingCountries(
+      checkoutTokenId
+    );
+    console.log({ countries });
   };
 
   const getNewOrder = (line_items: object) => {
@@ -70,9 +75,9 @@ const Checkout = () => {
         shipping_method: "ship_1ypbroE658n4ea",
       },
       payment: {
-        gateway: 'paypal',
+        gateway: "paypal",
         paypal: {
-          action: 'authorize',
+          action: "authorize",
         },
       },
       // payment: {
@@ -90,19 +95,28 @@ const Checkout = () => {
     };
   };
 
-
+  const Steps = () =>  (
+      <StepsList>
+        {
+          stepsLabels.map( (elem: string, index: number) => (
+            <li key={index} className={activeStep===index ? 'active' : ''}>{elem}</li>
+          ))
+        }
+      </StepsList>
+    )
+  ;
   return (
     <main>
       <section>
-        <h2>CheckOut</h2>
-      {
-        activeStep === 1 ? (
-          <AddressForm token={'token'} setShippingData={setShippingData} />
-        ) : (
-          <PaymentGetaway />
-        )
-      }
-     
+        <CheckoutContainer>
+          <h2>CheckOut</h2>
+          <Steps />
+          {activeStep === 0 ? (
+            <AddressForm token={"token"} setShippingData={setShippingData} />
+          ) : (
+            <PaymentGetaway setPayment={setPayment} />
+          )}
+        </CheckoutContainer>
       </section>
     </main>
   );

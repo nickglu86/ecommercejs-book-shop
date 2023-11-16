@@ -5,7 +5,7 @@
 
  export const getRawBookTitle = (title:string | undefined )  => title?.replaceAll("-", " ");
 
- export const findProductAttribute = (arr : IAtrributes, attrName: string, setAtttrribute: Function) => {
+ export const findProductAttribute = (arr : IAtrributes, attrName: string, setAtttrribute: (value :string) => void ) => {
     arr.forEach( attribute => {
       if(attribute.name === attrName){
         setAtttrribute(attribute.value)

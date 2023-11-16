@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const StyledForm = styled.form`
-  background-color: #f4f4f4;
+
   padding: 20px 80px;
   border-radius: 25px;
   width: 600px;
   margin: 40px auto 0;
-
+  border: 1px solid #e4e4e455;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.02), 0px 6px 12px rgba(0, 0, 0, 0.02);
   div {
     display: flex;
     justify-content: space-between;
