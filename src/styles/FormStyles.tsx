@@ -1,11 +1,8 @@
 import styled from "styled-components";
 
-export const StyledForm = styled.form`
-  
-  padding: 20px 80px;
-  
-  margin: 40px auto 0;
-
+ 
+export const PaymentForm = styled.form`
+  width: 50%;
   div {
     display: flex;
     justify-content: space-between;
@@ -14,15 +11,15 @@ export const StyledForm = styled.form`
   }
 `;
 
-export const StyledLabel = styled.label`
+export const FormLabel = styled.label`
   display: block;
   margin-bottom: 5px;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 400;
-  width: 34%;
+  width: 50%;
 `;
 
-export const StyledInput = styled.input`
+export const FormInput = styled.input`
   width: 50%;
   padding: 10px;
   margin: 0 10px 0 0;
@@ -30,7 +27,7 @@ export const StyledInput = styled.input`
   border-radius: 5px;
 `;
 
-export const StyledSelect = styled.select`
+export const FormSelect = styled.select`
 width: 55%;
 padding: 10px;
 margin: 0 10px 0 0;
@@ -39,7 +36,7 @@ border-radius: 5px;
 
 `;
 
-export const StyledButton = styled.button`
+export const FormButton = styled.button`
   background-color: #fff;
   color: rgb(10, 46, 90);
   border: 2px solid rgb(10, 46, 90);
@@ -55,3 +52,9 @@ export const StyledButton = styled.button`
     background-color: rgb(10, 46, 90);
     color: #fff;
   }`;
+
+  export const SubmitWrapper = styled.div`
+      position: absolute;
+      right: 0;
+      bottom: 0;
+  `;

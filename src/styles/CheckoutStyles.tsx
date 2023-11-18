@@ -39,4 +39,19 @@ export const StepsList = styled.ul`
         color: #000;    
       }
 
-`
+`;
+
+export const PaymentContainer = styled.div`
+  margin: 20px auto 0;
+  display: flex;
+  flex-direction: row;
+  padding: 60px 0px 40px;
+  position: relative;
+
+`;
+
+export const PaymentDetails = styled.div`
+  position: absolute;
+  top: 10px;
+  left: 60px;
+`;

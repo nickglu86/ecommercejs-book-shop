@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useShopContext } from "../context/ShopContext";
-import AddressForm from "../components/AddressForm";
+import AddressForm from "../components/Shipping";
 import PaymentGetaway from "../components/PaymentGetaway";
 import { CheckoutContainer, StepsList } from "../styles/CheckoutStyles";
 import { Box, BoxTitle } from "../styles/commomStyles";
@@ -31,7 +31,7 @@ const Checkout = () => {
   const [creditCardData, setCreditCardData] = useState({});
   const [lineItems, setLineItems] = useState({});
 
-  const stepsLabels = ["Shipping address", "Payment details", "Completed"];
+  const stepsLabels = ["Shipping Details", "Payment Details", "Completed"];
 
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
   const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);

@@ -1,15 +1,15 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react';
 import Card, { Focused } from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
-import {
-  PaymentContainer
-} from "../styles/PaymentGetawayStyles";
+ 
 import {
   formatCreditCardNumber,
   formatCVC,
   formatExpirationDate,
 } from '../utils/payment';
 import { Button } from '../styles/commomStyles';
+import { FormInput, FormLabel, PaymentForm, SubmitWrapper } from '../styles/FormStyles';
+import { PaymentContainer, PaymentDetails } from '../styles/CheckoutStyles';
 
 interface IPaymentGateawayProps {
   setCreditCardData: (obj: object) => void 
@@ -84,8 +84,7 @@ const PaymentGetaway = ( props: IPaymentGateawayProps) => {
 
   return (
     <PaymentContainer>
-       
-
+        <PaymentDetails>Enter your payment details:</PaymentDetails>
         <Card
           number={number}
           name={name}
@@ -94,11 +93,11 @@ const PaymentGetaway = ( props: IPaymentGateawayProps) => {
           focused={focused}
           callback={handleCallback}
         />
-        <form onSubmit={handleSubmit}>
-        <p>Enter your payment details</p>
+        <PaymentForm onSubmit={handleSubmit}>
+
           <div className="form-group">
-            <small>Name on card:</small>
-            <input
+            <FormLabel>Name on card:</FormLabel>
+            <FormInput
               type="text"
               name="name"
               className="form-control"
@@ -110,8 +109,8 @@ const PaymentGetaway = ( props: IPaymentGateawayProps) => {
             />
           </div>
           <div className="form-group">
-            <small>Card Number:</small>
-            <input
+            <FormLabel>Card Number:</FormLabel>
+            <FormInput
               type="tel"
               name="number"
               className="form-control"
@@ -124,8 +123,8 @@ const PaymentGetaway = ( props: IPaymentGateawayProps) => {
             />
           </div>
           <div className="form-group">
-            <small>Expiration Date:</small>
-            <input
+            <FormLabel>Expiration Date:</FormLabel>
+            <FormInput
               type="tel"
               name="expiry"
               className="form-control"
@@ -137,8 +136,8 @@ const PaymentGetaway = ( props: IPaymentGateawayProps) => {
             />
           </div>
           <div className="form-group">
-            <small>CVC:</small>
-            <input
+            <FormLabel>CVC:</FormLabel>
+            <FormInput
               type="tel"
               name="cvc"
               className="form-control"
@@ -149,11 +148,11 @@ const PaymentGetaway = ( props: IPaymentGateawayProps) => {
               onFocus={handleInputFocus}
             />
           </div>
-          <input type="hidden" name="issuer" value={issuer} />
-          <div className="form-actions">
+          <FormInput type="hidden" name="issuer" value={issuer} />
+          <SubmitWrapper>
             <Button type="submit">Submit</Button>
-          </div>
-        </form>
+          </SubmitWrapper>
+        </PaymentForm>
  
     </PaymentContainer>
   );
