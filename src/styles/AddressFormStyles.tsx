@@ -30,6 +30,15 @@ export const StyledInput = styled.input`
   border-radius: 5px;
 `;
 
+export const StyledSelect = styled.select`
+width: 50%;
+padding: 10px;
+margin: 0 10px 0 0;
+border: 1px solid #ccc;
+border-radius: 5px;
+
+`;
+
 export const StyledButton = styled.button`
   background-color: #fff;
   color: rgb(10, 46, 90);

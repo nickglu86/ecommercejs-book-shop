@@ -1,28 +1,73 @@
-import React, { useEffect, FormEvent } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import { useShopContext } from "../context/ShopContext";
 import {
   StyledForm,
   StyledLabel,
   StyledInput,
-  StyledButton
+  StyledButton,
+  StyledSelect,
 } from "../styles/AddressFormStyles";
 
 interface IAdressFormProps {
-  token: string;
-  setShippingData: (obj: object) => void 
+  checkoutToken: string;
+  setShippingData: (obj: object) => void;
+  nextStep: () => void;
+  setPostalZipCode: (zipCode: string) => void;
 }
+
+interface IShippingAdress {
+  customer: {
+    firstname: string;
+    lastname: string;
+    email: string;
+  };
+  shipping: {
+    name: string;
+    street: string;
+    town_city: string;
+    county_state: string;
+    postal_zip_code: string;
+    country: string;
+  };
+}
+
 const AddressForm = (props: IAdressFormProps) => {
   const { commerce, cart } = useShopContext();
-  const { token, setShippingData } = props;
+  const { checkoutToken, setShippingData, nextStep, setPostalZipCode } = props;
 
+  const [shippingSubdivisions, setShippingSubdivisions] = useState({});
+  const [shippingCountries, setShippingCountries] = useState({});
+  const [shippingCountry, setShippingCountry] = useState("");
+  const [ shippingSubdivision, setShippingSubdivision] = useState("");
 
   useEffect(() => {
     // commerce.services
     // .localeListShippingCountries(token)
     // .then((response: any) => console.log(response));
-  }, []);
+    if (checkoutToken.length > 0) {
+      fetchShippingCountries(checkoutToken);
+      fetchSubdivisions("US");
+    }
+  }, [checkoutToken]);
 
-  const formSubmit = (event : FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    console.log("Subdivisions");
+    if (checkoutToken.length > 0 && shippingCountry.length > 0) {
+      console.log("setSubdivisions");
+      fetchSubdivisions(shippingCountry);
+    }
+  }, [shippingCountry]);
+
+  useEffect(() => {
+    if (checkoutToken.length > 0) {
+      getShippingOptions(checkoutToken);
+    }
+   
+  }, [shippingSubdivision]);
+
+
+  
+  const formSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const formObject = Object.fromEntries(data.entries());
@@ -40,10 +85,37 @@ const AddressForm = (props: IAdressFormProps) => {
         postal_zip_code: formObject.postalzipcode,
         country: formObject.country,
       },
-    })
+    } as IShippingAdress);
+    setPostalZipCode(formObject.postalzipcode as string);
+    nextStep();
     // console.log(formObject.city);
-  }
+  };
 
+  const fetchShippingCountries = async (checkoutTokenId: string) => {
+    const { countries } = await commerce.services.localeListShippingCountries(
+      checkoutTokenId
+    );
+    setShippingCountries(countries);
+  };
+
+  const fetchSubdivisions = async (checkoutTokenId: string) => {
+    const { subdivisions } = await commerce.services.localeListSubdivisions(
+      checkoutTokenId
+    );
+    setShippingSubdivisions(subdivisions);
+  };
+
+  const getShippingOptions = async (checkoutTokenId: string) => {
+    
+
+  const shippingOptions = await commerce.checkout.getShippingOptions(checkoutTokenId,  {
+    country: shippingCountry,
+    region: shippingSubdivision,
+  })
+  
+    console.log(shippingOptions);
+  };
+  
   return (
     <StyledForm onSubmit={formSubmit}>
       <h4>Customer</h4>
@@ -74,16 +146,37 @@ const AddressForm = (props: IAdressFormProps) => {
       </div>
       <div>
         <StyledLabel htmlFor="country">Country:</StyledLabel>
-        <StyledInput type="text" id="country" name="country" required />
+        <StyledSelect
+          id="country"
+          name="country"
+          required
+          defaultValue={"US"}
+          onChange={(e) => setShippingCountry(e.target.value)}
+        >
+          {Object.entries(shippingCountries).map(([countyCode, countyName]) => (
+            <option key={countyCode} value={countyCode}>
+              {countyName as string}
+            </option>
+          ))}
+        </StyledSelect>
       </div>
       <div>
         <StyledLabel htmlFor="countrystate">Country State:</StyledLabel>
-        <StyledInput
-          type="text"
+        <StyledSelect
           id="country-state"
           name="countrystate"
           required
-        />
+          defaultValue={"CA"}
+          onChange={(e) => setShippingSubdivision(e.target.value)}
+        >
+          {Object.entries(shippingSubdivisions).map(
+            ([subdivisionCode, subdivisionName]) => (
+              <option key={subdivisionCode} value={subdivisionCode}  >
+                {subdivisionName as string}
+              </option>
+            )
+          )}
+        </StyledSelect>
       </div>
       <div>
         <StyledLabel htmlFor="postalzipcode">Postal Zip Code:</StyledLabel>
@@ -95,8 +188,8 @@ const AddressForm = (props: IAdressFormProps) => {
         />
       </div>
       <div>
-            <StyledButton type="submit">Submit</StyledButton>
-          </div>
+        <StyledButton type="submit">Submit</StyledButton>
+      </div>
     </StyledForm>
   );
 };
