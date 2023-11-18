@@ -5,6 +5,9 @@ import PaymentGetaway from "../components/PaymentGetaway";
 import { CheckoutContainer, StepsList } from "../styles/CheckoutStyles";
 import { Box, BoxTitle } from "../styles/commomStyles";
 
+interface ICompletedOrder {
+  id: string
+}
 interface IShippingAdress {
   customer: {
     firstname: string;
@@ -30,6 +33,7 @@ const Checkout = () => {
   const [postalZipCode, setPostalZipCode] = useState("");
   const [creditCardData, setCreditCardData] = useState({});
   const [lineItems, setLineItems] = useState({});
+  const [completedOrder, setCompletedOrder] = useState<ICompletedOrder>();
 
   const stepsLabels = ["Shipping Details", "Payment Details", "Completed"];
 
@@ -52,7 +56,10 @@ const Checkout = () => {
       try {
         commerce.checkout
           .capture(checkoutToken, getNewOrder(lineItems) as any)
-          .then((response) => console.log(response));
+          .then((response) => {
+            console.log(response);
+            setCompletedOrder(response as ICompletedOrder);
+          });
       } catch (error) {
         console.error(error);
       }
@@ -131,7 +138,10 @@ const Checkout = () => {
             nextStep={nextStep}
           />
         ) : activeStep === 2 ? (
-          <div>Finished order</div>
+          <div>
+            <h4>Order Completed</h4>
+            <div>Order Number: {completedOrder?.id}</div>
+          </div>
         ) : (
           <div>Error</div>
         )}

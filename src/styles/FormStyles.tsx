@@ -54,7 +54,5 @@ export const FormButton = styled.button`
   }`;
 
   export const SubmitWrapper = styled.div`
-      position: absolute;
-      right: 0;
-      bottom: 0;
+      justify-content: end!important;
   `;
