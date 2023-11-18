@@ -5,14 +5,13 @@ export const ShippingForm = styled.form`
   margin: 10px auto 0;
   display: flex;
   flex-direction: row-reverse;
- 
 `;
 
 export const ShippingContainer = styled.div`
   width: 50%;
   padding: 0 10px;
   position: relative;
-  div{
+  div {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -37,12 +36,11 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledSelect = styled.select`
-width: 55%;
-padding: 10px;
-margin: 0 10px 0 0;
-border: 1px solid #ccc;
-border-radius: 5px;
-
+  width: 55%;
+  padding: 10px;
+  margin: 0 10px 0 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 `;
 
 export const SubmitWrapper = styled.div`
@@ -66,4 +64,5 @@ export const StyledButton = styled.button`
     transition: 0.5s;
     background-color: rgb(10, 46, 90);
     color: #fff;
-  }`;
+  }
+`;

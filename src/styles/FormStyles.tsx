@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
- 
 export const PaymentForm = styled.form`
   width: 50%;
   div {
@@ -28,12 +27,11 @@ export const FormInput = styled.input`
 `;
 
 export const FormSelect = styled.select`
-width: 55%;
-padding: 10px;
-margin: 0 10px 0 0;
-border: 1px solid #ccc;
-border-radius: 5px;
-
+  width: 55%;
+  padding: 10px;
+  margin: 0 10px 0 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 `;
 
 export const FormButton = styled.button`
@@ -51,8 +49,9 @@ export const FormButton = styled.button`
     transition: 0.5s;
     background-color: rgb(10, 46, 90);
     color: #fff;
-  }`;
+  }
+`;
 
-  export const SubmitWrapper = styled.div`
-      justify-content: end!important;
-  `;
+export const SubmitWrapper = styled.div`
+  justify-content: end !important;
+`;

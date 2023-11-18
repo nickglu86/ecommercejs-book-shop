@@ -6,7 +6,7 @@ import { CheckoutContainer, StepsList } from "../styles/CheckoutStyles";
 import { Box, BoxTitle } from "../styles/commomStyles";
 
 interface ICompletedOrder {
-  id: string
+  id: string;
 }
 interface IShippingAdress {
   customer: {
@@ -53,16 +53,7 @@ const Checkout = () => {
       isDataExist(shippingData) &&
       isDataExist(creditCardData)
     ) {
-      try {
-        commerce.checkout
-          .capture(checkoutToken, getNewOrder(lineItems) as any)
-          .then((response) => {
-            console.log(response);
-            setCompletedOrder(response as ICompletedOrder);
-          });
-      } catch (error) {
-        console.error(error);
-      }
+      captureOrder();
     }
   }, [activeStep]);
 
@@ -105,12 +96,18 @@ const Checkout = () => {
     };
   };
 
-  const perceedCheckout = () => {
-    //  commerce.services.localeListShippingCountries(token).then((response: any) => console.log(response));
-    // commerce.checkout
-    // .capture(token, getNewOrder(checkoutObj.line_items) as any)
-    // .then((response) => console.log(response));
+  const captureOrder = () => {
+    try {
+      commerce.checkout
+        .capture(checkoutToken, getNewOrder(lineItems) as any)
+        .then((response) => {
+          setCompletedOrder(response as ICompletedOrder);
+        });
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   const Steps = () => (
     <StepsList>
       {stepsLabels.map((elem: string, index: number) => (
@@ -120,6 +117,7 @@ const Checkout = () => {
       ))}
     </StepsList>
   );
+
   return (
     <main>
       <Box>
@@ -139,8 +137,14 @@ const Checkout = () => {
           />
         ) : activeStep === 2 ? (
           <div>
-            <h4>Order Completed</h4>
-            <div>Order Number: {completedOrder?.id}</div>
+            {completedOrder ? (
+              <div style={{textAlign: 'center'}}>
+                <h4>Order Completed</h4>
+                <div>Order Number: {completedOrder?.id}</div>
+              </div>
+            ) : (
+              <div>Processing Order...</div>
+            )}
           </div>
         ) : (
           <div>Error</div>

@@ -7,7 +7,7 @@ import {
   StyledButton,
   StyledSelect,
   ShippingContainer,
-  SubmitWrapper
+  SubmitWrapper,
 } from "../styles/ShippingStyles";
 import { CheckOutButton } from "../styles/CartStyles";
 
@@ -44,18 +44,13 @@ const Shipping = (props: IAdressFormProps) => {
   const [shippingSubdivision, setShippingSubdivision] = useState("");
 
   useEffect(() => {
-    // commerce.services
-    // .localeListShippingCountries(token)
-    // .then((response: any) => console.log(response));
     if (checkoutToken.length > 0) {
       fetchShippingCountries(checkoutToken);
     }
   }, [checkoutToken]);
 
   useEffect(() => {
-    console.log("Subdivisions");
     if (checkoutToken.length > 0 && shippingCountry.length > 0) {
-      console.log("setSubdivisions");
       fetchSubdivisions(shippingCountry);
     }
   }, [shippingCountry]);
@@ -87,33 +82,42 @@ const Shipping = (props: IAdressFormProps) => {
     } as IShippingAdress);
     setPostalZipCode(formObject.postalzipcode as string);
     nextStep();
-    // console.log(formObject.city);
   };
 
   const fetchShippingCountries = async (checkoutTokenId: string) => {
-    const { countries } = await commerce.services.localeListShippingCountries(
-      checkoutTokenId
-    );
-    setShippingCountries(countries);
+    try {
+      const { countries } = await commerce.services.localeListShippingCountries(
+        checkoutTokenId
+      );
+      setShippingCountries(countries);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const fetchSubdivisions = async (checkoutTokenId: string) => {
-    const { subdivisions } = await commerce.services.localeListSubdivisions(
-      checkoutTokenId
-    );
-    setShippingSubdivisions(subdivisions);
+    try {
+      const { subdivisions } = await commerce.services.localeListSubdivisions(
+        checkoutTokenId
+      );
+      setShippingSubdivisions(subdivisions);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const getShippingOptions = async (checkoutTokenId: string) => {
-    const shippingOptions = await commerce.checkout.getShippingOptions(
-      checkoutTokenId,
-      {
-        country: shippingCountry,
-        region: shippingSubdivision,
-      }
-    );
-
-    console.log(shippingOptions);
+    try {
+      const shippingOptions = await commerce.checkout.getShippingOptions(
+        checkoutTokenId,
+        {
+          country: shippingCountry,
+          region: shippingSubdivision,
+        }
+      );
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -133,8 +137,8 @@ const Shipping = (props: IAdressFormProps) => {
           <StyledInput type="email" id="email" name="email" required />
         </div>
         <SubmitWrapper>
-        <CheckOutButton type="submit">Submit</CheckOutButton>
-      </SubmitWrapper>
+          <CheckOutButton type="submit">Submit</CheckOutButton>
+        </SubmitWrapper>
       </ShippingContainer>
       <ShippingContainer>
         <h4>Shipping: Details:</h4>
@@ -196,8 +200,6 @@ const Shipping = (props: IAdressFormProps) => {
           />
         </div>
       </ShippingContainer>
-
-
     </ShippingForm>
   );
 };
