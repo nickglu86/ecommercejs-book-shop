@@ -9,6 +9,7 @@ import {
   formatCVC,
   formatExpirationDate,
 } from '../utils/payment';
+import { Button } from '../styles/commomStyles';
 
 interface IPaymentGateawayProps {
   setCreditCardData: (obj: object) => void 
@@ -83,9 +84,8 @@ const PaymentGetaway = ( props: IPaymentGateawayProps) => {
 
   return (
     <PaymentContainer>
-      <div className="App-payment">
-        <h1>Enter your payment details</h1>
-        <h4>please input your information below</h4>
+       
+
         <Card
           number={number}
           name={name}
@@ -95,6 +95,7 @@ const PaymentGetaway = ( props: IPaymentGateawayProps) => {
           callback={handleCallback}
         />
         <form onSubmit={handleSubmit}>
+        <p>Enter your payment details</p>
           <div className="form-group">
             <small>Name on card:</small>
             <input
@@ -150,10 +151,10 @@ const PaymentGetaway = ( props: IPaymentGateawayProps) => {
           </div>
           <input type="hidden" name="issuer" value={issuer} />
           <div className="form-actions">
-            <button type="submit">Submit</button>
+            <Button type="submit">Submit</Button>
           </div>
         </form>
-      </div>
+ 
     </PaymentContainer>
   );
 };

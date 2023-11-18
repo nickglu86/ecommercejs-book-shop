@@ -3,6 +3,7 @@ import { useShopContext } from "../context/ShopContext";
 import AddressForm from "../components/AddressForm";
 import PaymentGetaway from "../components/PaymentGetaway";
 import { CheckoutContainer, StepsList } from "../styles/CheckoutStyles";
+import { Box, BoxTitle } from "../styles/commomStyles";
 
 interface IShippingAdress {
   customer: {
@@ -67,7 +68,6 @@ const Checkout = () => {
       const token: string = checkoutObj.id;
       setLineItems(checkoutObj.line_items);
       setCheckoutToken(token);
-
     } catch (error) {
       console.error(error);
     }
@@ -93,7 +93,7 @@ const Checkout = () => {
           cvc: "123",
           postal_zip_code: "94103",
         },
-      //  card: { ...creditCardData, postal_zip_code: postalZipCode },
+        //  card: { ...creditCardData, postal_zip_code: postalZipCode },
       },
     };
   };
@@ -115,29 +115,27 @@ const Checkout = () => {
   );
   return (
     <main>
-      <section>
-        <CheckoutContainer>
-          <h2>CheckOut</h2>
-          <Steps />
-          {activeStep === 0 ? (
-            <AddressForm
-              checkoutToken={checkoutToken}
-              setShippingData={setShippingData}
-              setPostalZipCode={setPostalZipCode}
-              nextStep={nextStep}
-            />
-          ) : activeStep === 1 ? (
-            <PaymentGetaway
-              setCreditCardData={setCreditCardData}
-              nextStep={nextStep}
-            />
-          ) : activeStep === 2 ? (
-            <div>Finished order</div>
-          ) : (
-            <div>Error</div>
-          )}
-        </CheckoutContainer>
-      </section>
+      <Box>
+        <BoxTitle>CheckOut</BoxTitle>
+        <Steps />
+        {activeStep === 0 ? (
+          <AddressForm
+            checkoutToken={checkoutToken}
+            setShippingData={setShippingData}
+            setPostalZipCode={setPostalZipCode}
+            nextStep={nextStep}
+          />
+        ) : activeStep === 1 ? (
+          <PaymentGetaway
+            setCreditCardData={setCreditCardData}
+            nextStep={nextStep}
+          />
+        ) : activeStep === 2 ? (
+          <div>Finished order</div>
+        ) : (
+          <div>Error</div>
+        )}
+      </Box>
     </main>
   );
 };

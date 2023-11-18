@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { StyledForm, StyledLabel, StyledInput, StyledButton, StyledTextArea } from "../styles/ContactStyles";
+import { Box, BoxTitle, Button } from "../styles/commomStyles";
 
 interface ContactFormData {
   name: string;
@@ -37,9 +38,9 @@ const Contact = () => {
 
   return (
     <main>
-      <section>
+      <Box>
         <StyledForm onSubmit={handleSubmit}>
-          <h2>Contact Us </h2>
+          <BoxTitle>Contact Us</BoxTitle>
           <div>
             <StyledLabel htmlFor="name">Name:</StyledLabel>
             <StyledInput
@@ -96,10 +97,10 @@ const Contact = () => {
             />
           </div>
           <div>
-            <StyledButton type="submit">Submit</StyledButton>
+            <Button type="submit">Submit</Button>
           </div>
         </StyledForm>
-      </section>
+      </Box>
     </main>
   );
 };

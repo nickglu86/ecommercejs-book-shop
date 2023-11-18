@@ -29,13 +29,13 @@ interface ModalType {
 
 export default function CartModal({ children, isOpen, toggle }: ModalType) {
   const { commerce, cart, updateCart } = useShopContext();
-
+  const cartEmpty = !cart?.line_items.length;
   // useEffect(() => {}, [cart]);
 
   const CartProductsList = () => {
     return (
       <CartProductsListContainer>
-        {cart?.line_items.length ? (
+        {!cartEmpty ? (
           cart?.line_items.map((item, index) => (
             <CartProductsListItem key={index}>
               <CartProductsItemImage>
@@ -93,7 +93,7 @@ export default function CartModal({ children, isOpen, toggle }: ModalType) {
             <CartTotal />
             <CartModalFooter>
               <Link to="/cart">
-                <CheckOutButton onClick={toggle}>Checkout</CheckOutButton>
+                <CheckOutButton onClick={toggle} disabled={cartEmpty}>Go to Cart</CheckOutButton>
               </Link>
             </CartModalFooter>
           </CartModalBox>

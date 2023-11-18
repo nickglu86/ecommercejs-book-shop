@@ -19,7 +19,6 @@ const SliderCard: FC<{ product: IProduct }> = ({ product }) => {
     commerce.products
       .retrieve(product.permalink, { type: "permalink" })
       .then((product) => {
-        console.log(product.attributes);
         const attributes = product.attributes;
         findProductAttribute(
           attributes as IAtrributes,

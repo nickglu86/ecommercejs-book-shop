@@ -2,17 +2,17 @@ import styled from "styled-components";
 
 export const StyledForm = styled.form`
 
-  padding: 20px 80px;
-  border-radius: 25px;
+  padding: 10px 80px;
   width: 600px;
-  margin: 40px auto 0;
-  border: 1px solid #e4e4e455;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.02), 0px 6px 12px rgba(0, 0, 0, 0.02);
+  margin: 0 auto 0;
   div {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 8px 0;
+  }
+  h2{
+    border-bottom: none;
   }
 `;
 

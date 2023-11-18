@@ -16,10 +16,11 @@ import {
   CheckOutButton,
 } from "../styles/CartStyles";
 import { Link } from "react-router-dom";
+import { Box, BoxTitle } from "../styles/commomStyles";
 
 const Cart = () => {
   const { commerce, cart, updateCart } = useShopContext();
- 
+  const cartEmpty = !cart?.line_items.length;
 
   const updateItemsAmount = (itemId: string, quantity: number) => {
     commerce.cart
@@ -71,6 +72,9 @@ const Cart = () => {
           <div>Total Price: {cart?.subtotal.formatted_with_symbol}</div>
         </div>
         <div>
+        <Link to="/checkout">
+            <CheckOutButton  disabled={cartEmpty}>Proceed to Checkout</CheckOutButton>
+          </Link>
           <CheckOutButton
             onClick={() =>
               commerce.cart.empty().then((response) => updateCart())
@@ -78,19 +82,19 @@ const Cart = () => {
           >
             Clean Cart
           </CheckOutButton>
-          <Link to="/checkout">
-            <CheckOutButton>CheckOut</CheckOutButton>
-          </Link>
+
         </div>
       </div>
     );
   };
   return (
-    <section>
-      <h2>My Cart:</h2>
-      <CartItems />
-      <Total />
-    </section>
+    <main>
+      <Box>
+        <BoxTitle>Shopping Cart</BoxTitle>
+        <CartItems />
+        <Total />
+      </Box>
+    </main>
   );
 };
 

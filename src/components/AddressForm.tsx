@@ -7,6 +7,7 @@ import {
   StyledButton,
   StyledSelect,
 } from "../styles/AddressFormStyles";
+import { CheckOutButton } from "../styles/CartStyles";
 
 interface IAdressFormProps {
   checkoutToken: string;
@@ -37,7 +38,7 @@ const AddressForm = (props: IAdressFormProps) => {
 
   const [shippingSubdivisions, setShippingSubdivisions] = useState({});
   const [shippingCountries, setShippingCountries] = useState({});
-  const [shippingCountry, setShippingCountry] = useState("");
+  const [shippingCountry, setShippingCountry] = useState("AT");
   const [ shippingSubdivision, setShippingSubdivision] = useState("");
 
   useEffect(() => {
@@ -46,7 +47,6 @@ const AddressForm = (props: IAdressFormProps) => {
     // .then((response: any) => console.log(response));
     if (checkoutToken.length > 0) {
       fetchShippingCountries(checkoutToken);
-      fetchSubdivisions("US");
     }
   }, [checkoutToken]);
 
@@ -150,7 +150,7 @@ const AddressForm = (props: IAdressFormProps) => {
           id="country"
           name="country"
           required
-          defaultValue={"US"}
+          defaultValue={""}
           onChange={(e) => setShippingCountry(e.target.value)}
         >
           {Object.entries(shippingCountries).map(([countyCode, countyName]) => (
@@ -166,7 +166,7 @@ const AddressForm = (props: IAdressFormProps) => {
           id="country-state"
           name="countrystate"
           required
-          defaultValue={"CA"}
+          defaultValue={""}
           onChange={(e) => setShippingSubdivision(e.target.value)}
         >
           {Object.entries(shippingSubdivisions).map(
@@ -187,8 +187,8 @@ const AddressForm = (props: IAdressFormProps) => {
           required
         />
       </div>
-      <div>
-        <StyledButton type="submit">Submit</StyledButton>
+      <div style={{textAlign: 'center'}}>
+        <CheckOutButton type="submit">Submit</CheckOutButton>
       </div>
     </StyledForm>
   );

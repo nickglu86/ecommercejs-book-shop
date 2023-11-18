@@ -1,5 +1,4 @@
 import styled from "styled-components";
- 
 
 export const CartModalHeader = styled.div`
   width: 100%;
@@ -42,7 +41,7 @@ export const CartCheckoutListContainer = styled.ul`
   padding: 35px 18px;
   width: 800px;
   min-height: 200px;
-  margin: 0 auto  60px;
+  margin: 0 auto 60px;
 `;
 
 export const CartProductRemoveItem = styled.button`
@@ -102,24 +101,35 @@ export const CartProductsInfo = styled.div`
 `;
 
 export const CartProductPrice = styled.span`
-      color: #35324c;
-      font-weight: 600;
-      padding-left: 4px;
+  color: #35324c;
+  font-weight: 600;
+  padding-left: 4px;
 `;
 
 export const CheckOutButton = styled.button`
-  background-color: rgb(10, 46, 90);
-  color: #fff;
-  border: 1px solid rgb(10, 46, 90);
-  border-radius: 18px;
-  font-size: 16px;
+  // background-color: rgb(10, 46, 90);
+  // color: #fff;
+  // border: 1px solid rgb(10, 46, 90);
+  // border-radius: 18px;
+  // font-size: 16px;
+
+  background-color: #fff;
+  color: #0f111196;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  font-size: 15px;
+ 
+
+  box-shadow: 0 2px 5px 0 rgba(213, 217, 217, 0.5);
   padding: 6px 16px;
   font-weight: 500;
   cursor: pointer;
+  margin: 0 10px;
 
   &:hover {
     transition: 0.5s;
-    background-color: #fff;
-    color: rgb(10, 46, 90);
+    background-color: #F7FAFA;
+    border-color: #D5D9D9;
+     
   }
 `;

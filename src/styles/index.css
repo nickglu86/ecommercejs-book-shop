@@ -47,6 +47,7 @@ nav ul li a {
 }
 main {
   padding-bottom: 30px;
+  min-height: 50vw;
 }
 section {
   /* margin: 20px auto 60px; */
@@ -66,7 +67,6 @@ section h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr ;
 }
 .gallery ul li {
-  overflow: hidden;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
